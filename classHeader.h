@@ -2,6 +2,8 @@
 #include <string>
 #include <ctime>
 #include <vector>
+#include <fstream>
+#include <tuple>
 
 using namespace std;
 
@@ -82,6 +84,38 @@ class StringHelper
 {
 };
 
-class MockStudentDate
+class MockStudentData
 {
+    // parse data from file to an array
+    static tuple<bool, int, string, vector<Student>> parse(const char *filename)
+    {
+
+        /*errorCode:
+        - 0: success
+        - 1: file not exist or missing
+        - 2 :
+        */
+
+        bool successful = true;
+        int errorCode = 0;
+        string message = "";
+        vector<Student> students;
+
+        fstream file(filename, ios::in | ios::out);
+
+        if (!file.is_open())
+        {
+            errorCode = 1;
+            message = "Read failed: cannot open " + string(filename);
+        }
+        else
+        {
+            while (!file.eof())
+            {
+                        }
+        }
+
+        auto result = make_tuple(successful, errorCode, message, students);
+        return result;
+    }
 };
