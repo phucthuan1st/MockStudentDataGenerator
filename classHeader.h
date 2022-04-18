@@ -37,13 +37,13 @@ class Address
 private:
     int house_number;
     std::string street;
-    int ward;
+    std::string ward;
     std::string district;
 
 public:
-    Address() : house_number(0), street(""), ward(1), district(""){};
+    Address() : house_number(0), street(""), ward(""), district(""){};
 
-    Address(int house_number, std::string street, int ward, std::string district)
+    Address(int house_number, std::string street, std::string ward, std::string district)
         : house_number(house_number), street(street), ward(ward), district(district){};
 };
 
@@ -112,7 +112,9 @@ class MockStudentData
         {
             while (!file.eof())
             {
-                        }
+                string temp;
+                getline(file, temp);
+            }
         }
 
         auto result = make_tuple(successful, errorCode, message, students);
