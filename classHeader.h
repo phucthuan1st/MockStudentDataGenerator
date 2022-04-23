@@ -82,6 +82,15 @@ class RandomNumber
 
 class StringHelper
 {
+    static vector<string> split(string source, string delimiter)
+    {
+        vector<string> result;
+        int start = source.find(delimiter);
+
+        while (start != string::npos)
+        {
+        }
+    }
 };
 
 class MockStudentData
@@ -114,10 +123,26 @@ class MockStudentData
             {
                 string temp;
                 getline(file, temp);
+
+                // get
             }
         }
 
         auto result = make_tuple(successful, errorCode, message, students);
         return result;
+    }
+
+    // add n new random student to students list vector
+    static bool createNewStudent(vector<Student> &students, int numberOfStudent)
+    {
+        return true;
+    }
+
+    // write all student info to file
+    static bool writeStudentInfo(string filename, vector<Student> &students)
+    {
+        fstream f(filename, ios::out);
+
+        return true;
     }
 };
