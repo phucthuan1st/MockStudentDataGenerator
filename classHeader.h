@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <cstring>
 #include <ctime>
 #include <vector>
 #include <fstream>
@@ -15,9 +16,9 @@ private:
     std::string _middleName;
 
 public:
-    Name() : _firstName(""), _lastName(""), _middleName(""){};
+    Name() : _firstName(""), _lastName(""), _middleName("") {};
     Name(std::string lastName, std::string middleName, std::string firstName)
-        : _lastName(lastName), _middleName(middleName), _firstName(firstName){};
+        : _lastName(lastName), _middleName(middleName), _firstName(firstName) {};
 };
 
 class Date
@@ -28,8 +29,8 @@ private:
     int year;
 
 public:
-    Date(int day, int month, int year) : day(day), month(month), year(year){};
-    Date() : day(1), month(1), year(1990){};
+    Date(int day, int month, int year) : day(day), month(month), year(year) {};
+    Date() : day(1), month(1), year(1990) {};
 };
 
 class Address
@@ -41,10 +42,10 @@ private:
     std::string district;
 
 public:
-    Address() : house_number(0), street(""), ward(""), district(""){};
+    Address() : house_number(0), street(""), ward(""), district("") {};
 
     Address(int house_number, std::string street, std::string ward, std::string district)
-        : house_number(house_number), street(street), ward(ward), district(district){};
+        : house_number(house_number), street(street), ward(ward), district(district) {};
 };
 
 class Student
@@ -96,7 +97,7 @@ class StringHelper
 class MockStudentData
 {
     // parse data from file to an array
-    static tuple<bool, int, string, vector<Student>> parse(const char *filename)
+    static tuple<bool, int, string, vector<Student>> parse(const char* filename)
     {
 
         /*errorCode:
@@ -121,9 +122,63 @@ class MockStudentData
         {
             while (!file.eof())
             {
-                string temp;
-                getline(file, temp);
+                Student student;
+                for (int i = 0; i < 7; i++)
+                {
+                    string temp;
+                    getline(file, temp);
+                    if (i == 0)
+                    {
+                        student._id = temp.substr(9, temp.length())
+                    }
+                    if (i == 1)
+                    {
+                        string temp1;
+                        temp1 = temp.substr(7, temp.length());
+                        temp1 = strtok(strdup(temp.c_str()), " ");
+                        student._name._lastName = temp1;
+                        temp1 = strtok(NULL, " ");
+                        student._name._middleName = temp1;
+                        temp1 = strtok(NULL, " ");
+                        student._name._firstName = temp1;
+                    }
+                    if (i == 2)
+                    {
+                        student._GPA = temp.substr(6, temp.length())
+                    }
+                    if (i == 3)
+                    {
+                        student._telephone = temp.substr(12, temp.length())
+                    }
+                    if (i == 4)
+                    {
+                        student._email = temp.substr(8, temp.length())
+                    }
+                    if (i == 5)
+                    {
+                        string temp1;
+                        temp1 = temp.substr(6, temp.length());
+                        temp1 = strtok(strdup(temp.c_str()), "/");
+                        student._day_of_birth.day = stoi(temp1);
+                        temp1 = strtok(NULL, "/");
+                        student._day_of_birth.month = stoi(temp1);
+                        temp1 = strtok(NULL, "/");
+                        student._day_of_birth.year = stoi(temp1);
+                    }
+                    if (i == 6)
+                    {
+                        string temp1;
+                        temp1 = temp.substr(10, temp.length());
+                        temp1 = strtok(strdup(temp.c_str()), " ");
+                        student._day_of_birth.day = temp1;
+                        temp1 = strtok(NULL, ",");
+                        student._day_of_birth.month = temp1;
+                        temp1 = strtok(NULL, ",");
+                        student._day_of_birth.year = temp1;
+                    }
+                }
 
+                students.push_back(student);
                 // get
             }
         }
@@ -133,13 +188,13 @@ class MockStudentData
     }
 
     // add n new random student to students list vector
-    static bool createNewStudent(vector<Student> &students, int numberOfStudent)
+    static bool createNewStudent(vector<Student>& students, int numberOfStudent)
     {
         return true;
     }
 
     // write all student info to file
-    static bool writeStudentInfo(string filename, vector<Student> &students)
+    static bool writeStudentInfo(string filename, vector<Student>& students)
     {
         fstream f(filename, ios::out);
 
