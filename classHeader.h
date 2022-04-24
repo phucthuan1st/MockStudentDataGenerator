@@ -16,6 +16,36 @@ private:
     std::string _middleName;
 
 public:
+    string getFirstName()
+    {
+        return _firstName;
+    }
+
+    string getMiddleName()
+    {
+        return _middleName;
+    }
+
+    string getLastName()
+    {
+        return _lastName;
+    }
+
+    void setFirstName(string firstName)
+    {
+        _firstName = firstName;
+    }
+
+    void setLastName(string lastName)
+    {
+        _lastName = lastName;
+    }
+
+    void setMiddleName(string middleName)
+    {
+        _middleName = middleName;
+    }
+
     Name() : _firstName(""), _lastName(""), _middleName("") {};
     Name(std::string lastName, std::string middleName, std::string firstName)
         : _lastName(lastName), _middleName(middleName), _firstName(firstName) {};
@@ -29,6 +59,22 @@ private:
     int year;
 
 public:
+
+    void setDay(int _day)
+    {
+        day = _day;
+    }
+
+    void setMonth(int _month)
+    {
+        month = _month;
+    }
+
+    void setYear(int _year)
+    {
+        year = _year;
+    }
+
     Date(int day, int month, int year) : day(day), month(month), year(year) {};
     Date() : day(1), month(1), year(1990) {};
 };
@@ -42,6 +88,22 @@ private:
     std::string district;
 
 public:
+
+    void setHouseNumber(int _house_number) {
+        house_number = _house_number;
+    }
+
+    void setStreet(string _street) {
+        street = _street;
+    }
+
+    void setWard(string _ward) {
+        ward = _ward;
+    }
+    void setDistrict(string _district) {
+        district = _district;
+    }
+
     Address() : house_number(0), street(""), ward(""), district("") {};
 
     Address(int house_number, std::string street, std::string ward, std::string district)
@@ -69,6 +131,38 @@ public:
         _telephone = telephone;
         _email = email;
         _day_of_birth = DOB;
+        _address = address;
+    }
+
+    void setID(string id)
+    {
+        _id = id;
+    }
+
+    void setName(Name name)
+    {
+        _name = name;
+    }
+
+    void setGPA(double GPA )
+    {
+        _GPA = GPA;
+    }
+    void setTelephone(string telephone)
+    {
+        _telephone = telephone;
+    }
+    void setEmail(string email)
+    {
+        _email = email;
+    }
+    void setDOB(Date DOB)
+    {
+        _day_of_birth = DOB;
+    }
+
+    void setAddress(Address address)
+    {
         _address = address;
     }
 };
@@ -122,6 +216,7 @@ class MockStudentData
         {
             while (!file.eof())
             {
+                Name name;
                 Student student;
                 for (int i = 0; i < 7; i++)
                 {
@@ -129,52 +224,59 @@ class MockStudentData
                     getline(file, temp);
                     if (i == 0)
                     {
-                        student._id = temp.substr(9, temp.length())
+                        student.setID(temp.substr(9, temp.length()));
                     }
                     if (i == 1)
                     {
                         string temp1;
                         temp1 = temp.substr(7, temp.length());
                         temp1 = strtok(strdup(temp.c_str()), " ");
-                        student._name._lastName = temp1;
+                        name.setLastName(temp1);
                         temp1 = strtok(NULL, " ");
-                        student._name._middleName = temp1;
+                        name.setMiddleName(temp1);
                         temp1 = strtok(NULL, " ");
-                        student._name._firstName = temp1;
+                        name.setFirstName(temp1);
+                        student.setName(name);
                     }
                     if (i == 2)
                     {
-                        student._GPA = temp.substr(6, temp.length())
+                        student.setGPA(stod(temp.substr(6, temp.length())));
                     }
                     if (i == 3)
                     {
-                        student._telephone = temp.substr(12, temp.length())
+                        student.setTelephone(temp.substr(12, temp.length()));
                     }
                     if (i == 4)
                     {
-                        student._email = temp.substr(8, temp.length())
+                        student.setEmail(temp.substr(8, temp.length()));
                     }
                     if (i == 5)
                     {
+                        Date date;
                         string temp1;
                         temp1 = temp.substr(6, temp.length());
                         temp1 = strtok(strdup(temp.c_str()), "/");
-                        student._day_of_birth.day = stoi(temp1);
+                        date.setDay(stoi(temp1));
                         temp1 = strtok(NULL, "/");
-                        student._day_of_birth.month = stoi(temp1);
+                        date.setMonth(stoi(temp1));
                         temp1 = strtok(NULL, "/");
-                        student._day_of_birth.year = stoi(temp1);
+                        date.setYear(stoi(temp1));
+                        student.setDOB(date);
                     }
                     if (i == 6)
                     {
+                        Address address;
                         string temp1;
                         temp1 = temp.substr(10, temp.length());
                         temp1 = strtok(strdup(temp.c_str()), " ");
-                        student._day_of_birth.day = temp1;
+                        address.setHouseNumber(stoi(temp1));
                         temp1 = strtok(NULL, ",");
-                        student._day_of_birth.month = temp1;
+                        address.setStreet(temp1);
                         temp1 = strtok(NULL, ",");
-                        student._day_of_birth.year = temp1;
+                        address.setWard(temp1);
+                        temp1 = strtok(NULL, ",");
+                        address.setDistrict(temp1);
+                        student.setAddress(address);
                     }
                 }
 
