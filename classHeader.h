@@ -191,6 +191,7 @@ class StringHelper
 class MockStudentData
 {
     // parse data from file to an array
+public:
     static tuple<bool, int, string, vector<Student>> parse(const char* filename)
     {
 
@@ -229,8 +230,8 @@ class MockStudentData
                     if (i == 1)
                     {
                         string temp1;
-                        temp1 = temp.substr(7, temp.length());
-                        temp1 = strtok(strdup(temp.c_str()), " ");
+                        temp1 = temp.substr(11, temp.length() - 11);
+                        temp1 = strtok(strdup(temp1.c_str()), " ");
                         name.setLastName(temp1);
                         temp1 = strtok(NULL, " ");
                         name.setMiddleName(temp1);
@@ -240,22 +241,22 @@ class MockStudentData
                     }
                     if (i == 2)
                     {
-                        student.setGPA(stod(temp.substr(6, temp.length())));
+                        student.setGPA(stod(temp.substr(10, temp.length()-10)));
                     }
                     if (i == 3)
                     {
-                        student.setTelephone(temp.substr(12, temp.length()));
+                        student.setTelephone(temp.substr(16, temp.length()-16));
                     }
                     if (i == 4)
                     {
-                        student.setEmail(temp.substr(8, temp.length()));
+                        student.setEmail(temp.substr(12, temp.length()-12));
                     }
                     if (i == 5)
                     {
                         Date date;
                         string temp1;
-                        temp1 = temp.substr(6, temp.length());
-                        temp1 = strtok(strdup(temp.c_str()), "/");
+                        temp1 = temp.substr(10, temp.length()-10);
+                        temp1 = strtok(strdup(temp1.c_str()), "/");
                         date.setDay(stoi(temp1));
                         temp1 = strtok(NULL, "/");
                         date.setMonth(stoi(temp1));
@@ -267,8 +268,8 @@ class MockStudentData
                     {
                         Address address;
                         string temp1;
-                        temp1 = temp.substr(10, temp.length());
-                        temp1 = strtok(strdup(temp.c_str()), " ");
+                        temp1 = temp.substr(14, temp.length()-14);
+                        temp1 = strtok(strdup(temp1.c_str()), " ");
                         address.setHouseNumber(stoi(temp1));
                         temp1 = strtok(NULL, ",");
                         address.setStreet(temp1);
