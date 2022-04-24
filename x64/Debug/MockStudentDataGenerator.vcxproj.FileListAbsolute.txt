@@ -1,2 +1,0 @@
-C:\Users\letru\source\repos\MockStudentDataGenerator\x64\Debug\MockStudentDataGenerator.exe
-C:\Users\letru\source\repos\MockStudentDataGenerator\x64\Debug\MockStudentDataGenerator.pdb
