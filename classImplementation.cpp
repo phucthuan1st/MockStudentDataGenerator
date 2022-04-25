@@ -278,6 +278,19 @@ tuple<bool, int, string, vector<Student>> MockStudentData::parse(const char* fil
 
 bool MockStudentData::createNewStudent(vector<Student>& students, int numberOfStudent)
 {
+    Student student;
+    for (int i = 0; i < numberOfStudent; i++)
+    {
+        student.setID(RandomSimpleInfo::nextID());
+        student.setName(RandomNameGenerator::next());
+        student.setGPA(RandomSimpleInfo::nextGPA());
+        student.setTelephone(RandomSimpleInfo::nextTelephoneNumber());
+        student.setEmail(RandomSimpleInfo::nextEmail());
+        student.setDOB(RandomDateGenerator::next());
+        student.setAddress(RandomAddressGenerator::next());
+        students.push_back(student);
+    }
+
     return true;
 }
 
@@ -449,3 +462,4 @@ string RandomSimpleInfo::nextID()
     int id = RandomIntegerGenerator::instance()->next(9999);
     result += to_string(id);
 }
+
