@@ -51,29 +51,10 @@ public:
 class RandomNameListGenerator
 {
 private:
+    RandomNameListGenerator();
+
     vector<pair<string, float>> _sample_firstNames;
-    vector<string> _sample_middleNames = {
-        "Van",
-        "Thi",
-        "Tuong",
-        "Phuc",
-        "Hong",
-        "Minh",
-        "Hoang",
-        "Viet",
-        "Thuy",
-        "Kieu",
-        "Huy",
-        "Lan",
-        "Tuan",
-        "Ngoc",
-        "Phuong",
-        "Anh",
-        "Lam",
-        "Thao",
-        "Tan",
-        "Tu",
-        "Ha"};
+    vector<string> _sample_middleNames;
     vector<pair<string, float>> _sample_lastNames;
 
     void getSampleFirstNames(const char *filename);
