@@ -102,7 +102,6 @@ class MockStudentData
         /*errorCode:
         - 0: success
         - 1: file not exist or missing
-        - 2 :
         */
 
         bool successful = true;
