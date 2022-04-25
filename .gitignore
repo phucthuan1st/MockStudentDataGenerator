@@ -31,11 +31,4 @@
 *.out
 *.app
 /.vs
-/MockStudentDataGenerator.vcxproj.user
-/MockStudentDataGenerator.vcxproj.filters
-/MockStudentDataGenerator.vcxproj
-/MockStudentDataGenerator.sln
-/Debug/MockStud.2717E9F4.tlog
-/Debug/MockStudentDataGenerator.log
-/Debug/vc142.pdb
-/x64/Debug
+
