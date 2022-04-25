@@ -37,132 +37,133 @@ int RandomIntegerGenerator::next(int left, int right)
 
 RandomAddressGenerator::RandomAddressGenerator()
 {
-    _ward = {"An Khanh", "An Loi Dong", "An Phu", "Binh Chieu", "Binh Tho", "Binh Trung Đong", "Binh Trung Tay", "Cat Lai", "Hiep Binh Chanh", "Ben Nghe", "Cau Kho", "Cau ong Lanh", "Ben Thanh", "Ca Giang", "Da Kao", "Nguyen Thai Binh", "Pham Ngu Lao", "Nguyen Cu Trinh", "Tan Dinh", "Phuong 1", "Phuong 2", "Phuong 3", "Phuong 4", "Phuong 5", "Phuong Binh Thuan", "Phuong Phu My", "Phuong Phu Thuan", "Phuong Tan Hung", "Phuong Tan Kieng", "An Phu Dong", "Dong Hung Thuan", "Hiep Thanh", "Tan Chanh Hiep", "Tan Hung Thuan", "An Lac", "Binh Hung Hoa", "Binh Tri Dong", "Phuong Hiep Tan", "Phuong Hoa Thanh", "Phuong Phu Thanh", "Phuong Phu Tho Hoa", "Phuong Phu Trung", "Xa Pham Van Hai", "Xa Binh Loi", "Xa An Thoi Dong", "Xa Binh Khanh", "Xa An Phu", "Xa An Nhon Tay", "Xa Dong Hanh", "Xa Nhi Binh", "Xa Tan Hung", "Xa My Luong"};
-    _district = {"Thanh pho Thu Duc", "Quan 1", "Quan 3", "Quan 4", "Quan 5", "Quan 6", "Quan 7", "Quan 8", "Quan 10", "Quan 11", "Quan 12", "Quan Binh Tan", "Quan Binh Thanh", "Quan Go Vap", "Quan Phu Nhuan", "Quận Tan Binh", "Quan Tan Phu", "Huyen Binh Chanh", "Huyen Can Gio", "Huyen Cu Chi", "Huyen Hoc Mon", "Huyen Nha Be"};
+    _sample_streets = { "Alexandre de Rhodes", "Ba Le Chan", "Calmette", "Ben Chuong Duong", "Bui Thi Xuan", "Bui Vien", "Cach Mang Thang 8", "Cao Ba Nha", "Cao Ba Quat", "Cay Diep", "Chu Manh Chinh", "Co Bac", "Co Giang", "Cong Quynh", "Cong Truong Lam Son", "Cong Truong Me Linh", "Cong Truong Paris", "Dang Dung", "Dang Tat", "Dang Thi Nhu", "Dang Tran Con", "De Tham", "Dien Bien Phu", "Dinh Cong Tranh", "Dinh Tien Hoang", "Do Quang Dau", "Dong Du", "Dong Khoi", "Hai Ba Trung", "Hai Trieu", "Ham Nghi", "Han Thuyen", "Hoa My", "Hoang Sa", "Nguyen Du", "Nguyen Dinh Chieu", "Nguyen Cuu Van", "Nguyen Cu Trinh", "Nguyen Cong Tru", "Nguyen Canh Chan", "Nguyen Binh Khiem", "Nguyen An Ninh", "Ngo Van Nam", "Ngo Quyen", "Ngo Duc Ke", "Nam Quoc Cang", "Mai Thi Luu", "Mac Thi Buoi", "Mac Dinh Chi", "Ma Lo", "Ly Van Phuc", "Ly Thai To", "Ly Chien Thang", "Luu Van Lang", "Luong Huu Khanh", "Le Van Huu", "Le Thi Rieng", "Le Thi Hong Gam", "Le Thanh Ton", "Le Loi", "Le Lai", "Le Duan", "Le Cong Kieu", "Ky Con", "Le Anh Xuan", "Khanh Hoi", "Huynh Thuc Khang", "Huyen Quang ", "Nguyen Hau", "Nguyen Hue", "Nguyen Huu Canh", "Nguyen Huu Cau", "Nguyen Huy Tu", "Nguyen Khac Nhu", "Nguyen Phi Khanh", "Nguyen Sieu", "Nguyen Thai Binh", "Nguyen Thai Hoc" }
+    _sample_wards = { "Ward An Khanh", "Ward An Loi Dong", "Ward An Phu", "Ward Binh Chieu", "Ward Binh Tho", "Ward Binh Trung Đong", "Ward Binh Trung Tay", "Ward Cat Lai", "Ward Hiep Binh Chanh", "Ward Ben Nghe", "Ward Cau Kho", "Ward Cau ong Lanh", "Ward Ben Thanh", "Ward Ca Giang", "Ward Da Kao", "Ward Nguyen Thai Binh", "Ward Pham Ngu Lao", "Ward Nguyen Cu Trinh", "Ward Tan Dinh", "Ward 1", "Ward 2", "Ward 3", "Ward 4", "Ward 5", "Ward Binh Thuan", "Ward Phu My", "Ward Phu Thuan", "Ward Tan Hung", "Ward Tan Kieng", "Ward An Phu Dong", "Ward Dong Hung Thuan", "Ward Hiep Thanh", "Ward Tan Chanh Hiep", "Ward Tan Hung Thuan", "Ward An Lac", "Ward Binh Hung Hoa", "Ward Binh Tri Dong", "Ward Phuong Hiep Tan", "Ward Hoa Thanh", "Ward Phu Thanh", "Ward Phu Tho Hoa", "Ward Phu Trung", "Ward Pham Van Hai", "Ward Binh Loi", "Ward An Thoi Dong", "Ward Binh Khanh", "Ward An Phu", "Ward An Nhon Tay", "Ward Dong Hanh", "Ward Nhi Binh", "Ward Tan Hung", "Ward My Luong" };
+    _sample_districts = { "District Thu Duc", "District 1", "District 3", "District 4", "District 5", "District 6", "District 7", "District 8", "District 10", "District 11", "District 12", "District Binh Tan", "District Binh Thanh", "District Go Vap", "District Phu Nhuan", "District Tan Binh", "District Tan Phu", "District Binh Chanh", "District Can Gio", "District Cu Chi", "District Hoc Mon", "District Nha Be" };
 }
 
 Address RandomAddressGenerator::next()
 {
-    int index = RandomIntegerGenerator::instance()->next(_district.size());
-    string district = _district[index];
+    int index = RandomIntegerGenerator::instance()->next(_sample_district.size());
+    string district = _sample_district[index];
     string ward = "";
 
-    if (district == "Thanh pho Thu Duc")
+    if (district == "District Thu Duc")
     {
         int index = RandomIntegerGenerator::instance()->next(0, 8);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan 1")
+    else if (district == "District 1")
     {
         int index = RandomIntegerGenerator::instance()->next(9, 18);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan 3")
+    else if (district == "District 3")
     {
         int index = RandomIntegerGenerator::instance()->next(19, 23);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan 4")
+    else if (district == "District 4")
     {
         int index = RandomIntegerGenerator::instance()->next(19, 23);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan 5")
+    else if (district == "District 5")
     {
         int index = RandomIntegerGenerator::instance()->next(19, 23);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan 6")
+    else if (district == "District 6")
     {
         int index = RandomIntegerGenerator::instance()->next(19, 23);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan 7")
+    else if (district == "District 7")
     {
         int index = RandomIntegerGenerator::instance()->next(24, 28);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan 8")
+    else if (district == "District 8")
     {
         int index = RandomIntegerGenerator::instance()->next(19, 23);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan 10")
+    else if (district == "District 10")
     {
         int index = RandomIntegerGenerator::instance()->next(19, 23);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan 11")
+    else if (district == "District 11")
     {
         int index = RandomIntegerGenerator::instance()->next(19, 23);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan 12")
+    else if (district == "District 12")
     {
         int index = RandomIntegerGenerator::instance()->next(29, 33);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan Binh Tan")
+    else if (district == "District Binh Tan")
     {
         int index = RandomIntegerGenerator::instance()->next(34, 36);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan Binh Thanh")
+    else if (district == "District Binh Thanh")
     {
         int index = RandomIntegerGenerator::instance()->next(19, 23);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan Go Vap")
+    else if (district == "District Go Vap")
     {
         int index = RandomIntegerGenerator::instance()->next(19, 23);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan Phu Nhuan")
+    else if (district == "District Phu Nhuan")
     {
         int index = RandomIntegerGenerator::instance()->next(19, 23);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan Tan Binh")
+    else if (district == "District Tan Binh")
     {
         int index = RandomIntegerGenerator::instance()->next(19, 23);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan Tan Phu")
+    else if (district == "District Tan Phu")
     {
         int index = RandomIntegerGenerator::instance()->next(37, 41);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan Binh Chanh")
+    else if (district == "District Binh Chanh")
     {
         int index = RandomIntegerGenerator::instance()->next(42, 43);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan Can Gio")
+    else if (district == "District Can Gio")
     {
         int index = RandomIntegerGenerator::instance()->next(44, 45);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan Cu Chi")
+    else if (district == "District Cu Chi")
     {
         int index = RandomIntegerGenerator::instance()->next(46, 47);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan Hoc Mon")
+    else if (district == "District Hoc Mon")
     {
         int index = RandomIntegerGenerator::instance()->next(48, 49);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
-    else if (district == "Quan Nha Be")
+    else if (district == "District Nha Be")
     {
         int index = RandomIntegerGenerator::instance()->next(50, 51);
-        ward = _ward[index];
+        ward = _sample_ward[index];
     }
 
     index = RandomIntegerGenerator::instance()->next(1, 500);
     int house_number = index;
 
-    index = RandomIntegerGenerator::instance()->next(1, 500);
-    string street = "Duong so " + to_string(index);
+    index = RandomIntegerGenerator::instance()->next(_sample_street.size());
+    string street = _sample_street[index];
 
     Address result(house_number, street, ward, district);
     return result;
@@ -194,7 +195,7 @@ Date RandomDateGenerator::next()
     return result;
 }
 
-tuple<bool, int, string, vector<Student>> MockStudentData::parse(const char *filename)
+tuple<bool, int, string, vector<Student>> MockStudentData::parse(const char* filename)
 {
 
     bool successful = true;
@@ -275,12 +276,12 @@ tuple<bool, int, string, vector<Student>> MockStudentData::parse(const char *fil
     return result;
 }
 
-bool MockStudentData::createNewStudent(vector<Student> &students, int numberOfStudent)
+bool MockStudentData::createNewStudent(vector<Student>& students, int numberOfStudent)
 {
     return true;
 }
 
-bool MockStudentData::writeStudentInfo(string filename, vector<Student> &students)
+bool MockStudentData::writeStudentInfo(string filename, vector<Student>& students)
 {
     fstream f(filename, ios::out);
 
@@ -329,13 +330,13 @@ RandomNameGenerator::RandomNameGenerator()
         "Thao",
         "Tan",
         "Tu",
-        "Ha"};
+        "Ha" };
 
     getSampleLastNames("top_lastname.txt");
     getSampleFirstNames("top_firstname.txt");
 }
 
-void RandomNameGenerator::getSampleLastNames(const char *filename)
+void RandomNameGenerator::getSampleLastNames(const char* filename)
 {
     fstream file(filename, ios::in);
     while (!file.eof())
@@ -349,7 +350,7 @@ void RandomNameGenerator::getSampleLastNames(const char *filename)
     }
 }
 
-void RandomNameGenerator::getSampleFirstNames(const char *filename)
+void RandomNameGenerator::getSampleFirstNames(const char* filename)
 {
     fstream file(filename, ios::in);
     while (!file.eof())
