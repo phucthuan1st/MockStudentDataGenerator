@@ -3,6 +3,7 @@
 #include <ctime>
 #include <vector>
 #include <fstream>
+#include <iostream>
 #include <tuple>
 #include <utility>
 #include <memory>
@@ -53,52 +54,43 @@ class RandomNameGenerator
 private:
     RandomNameGenerator();
 
-    vector<pair<string, float>> _sample_firstNames;
-    vector<string> _sample_middleNames;
-    vector<pair<string, float>> _sample_lastNames;
+    static vector<pair<string, float>> _sample_firstNames;
+    static vector<string> _sample_middleNames;
+    static vector<pair<string, float>> _sample_lastNames;
 
-    void getSampleFirstNames(const char *filename);
-    void getSampleLastNames(const char *filename);
+    static void getSampleFirstNames(const char *filename);
+    static void getSampleLastNames(const char *filename);
 
 public:
-    Name next();
-    vector<Name> list_next();
+    static Name next();
 };
 
 class Date
 {
 private:
-    int day;
-    int month;
-    int year;
+    int _day;
+    int _month;
+    int _year;
 
 public:
-    void setDay(int _day)
-    {
-        day = _day;
-    }
+    void setDay(int _day) { _day = _day; }
 
-    void setMonth(int _month)
-    {
-        month = _month;
-    }
+    void setMonth(int _month) { _month = _month; }
 
-    void setYear(int _year)
-    {
-        year = _year;
-    }
+    void setYear(int _year) { _year = _year; }
 
-    Date(int day, int month, int year) : day(day), month(month), year(year){};
-    Date() : day(1), month(1), year(1990){};
+    Date(int day, int month, int year) : _day(day), _month(month), _year(year){};
+    Date() : _day(1), _month(1), _year(1990){};
 
-    Date getDate() const { return Date(day, month, year); }
+    int day() const { return _day; }
+    int month() const { return _month; }
+    int year() const { return _year; }
 };
 
 class RandomDateGenerator
 {
 public:
-    Date next();
-    vector<Date> list_next();
+    static Date next();
 };
 
 class Address
@@ -121,21 +113,25 @@ public:
 
     Address(int house_number, std::string street, std::string ward, std::string district)
         : house_number(house_number), street(street), ward(ward), district(district){};
+
+    string Street() { return street; }
+    string Ward() { return ward; }
+    string District() { return district; }
+    int houseNumber() { return house_number; }
 };
 
 class RandomAddressGenerator
 {
 private:
-    vector<int> _house_number;
-    vector<string> _sample_street;
-    vector<string> _sample_ward;
-    vector<string> _sample_district;
+    static vector<int> _house_number;
+    static vector<string> _sample_street;
+    static vector<string> _sample_ward;
+    static vector<string> _sample_district;
 
-public:
     RandomAddressGenerator();
 
-    Address next();
-    vector<Address> address_next();
+public:
+    static Address next();
 };
 
 class Student
@@ -175,32 +171,57 @@ public:
     void setDOB(Date DOB) { _day_of_birth = DOB; }
 
     void setAddress(Address address) { _address = address; }
+
+    string id() { return _id; }
+    Name name() { return _name; }
+    double gpa() { return _GPA; }
+    string telephone() { return _telephone; }
+    string email() { return _email; }
+    Date dateOfBirth() { return _day_of_birth; }
+    Address address() { return _address; }
 };
 
-class StringHelper
+class StringUtils
 {
 public:
     static vector<string> split(string source, string delimiter);
+    static string to_String(Name name);
+    static string to_String(Date date);
+    static string to_String(Address address);
 };
 
 class RandomSimpleInfo
 {
 public:
-    string nextTelephoneNumber();
-    double nextGPA();
-    string nextEmail(Name);
-    string nextID();
+    static string nextTelephoneNumber();
+    static double nextGPA();
+    static string nextEmail(Name);
+    static string nextID();
 };
 
 class MockStudentData
 {
-    // parse data from file to an array
 public:
+    // parse data from file to an array
     static tuple<bool, int, string, vector<Student>> parse(const char *filename);
 
     // add n new random student to students list vector
     static bool createNewStudent(vector<Student> &students, int numberOfStudent);
 
     // write all student info to file
-    static bool writeStudentInfo(string filename, vector<Student> &students);
+    static bool writeStudentInfo(const char *filename, vector<Student> &students);
+};
+
+class StudentProcessor
+{
+public:
+    static double averageGPA(vector<Student> &students);
+    static vector<Student> findAboveAverageStudent(vector<Student> &students);
+    static void printStudentList(vector<Student> &students);
+};
+
+class ProgramExecution
+{
+public:
+    static int main();
 };
