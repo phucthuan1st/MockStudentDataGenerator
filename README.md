@@ -39,18 +39,18 @@ If your PC do not have git yet, just install it [Git install instruction](https:
 
 3. Compile source file using c++ compiler (such as mingw c++ as below)
 ```shellscript
-g++ classImplementation.cpp Main.cpp -o ./Release/MockupStudentDataGenrator
+g++ classImplementation.cpp Main.cpp -o ./Release/MockupStudentDataGenerator
 ```
 You can also compile it by MSVC in VS too
 
 4. Open executive file in Release folder or type command to terminal: 
 ```shellscript
-./Release/MockupStudentDataGenrator
+./Release/MockupStudentDataGenerator
 ```
 
   You can combine step 3 and 4 like following:
   ```shellscript
-  g++ classImplementation.cpp Main.cpp -o ./Release/MockupStudentDataGenrator ; ./Release/MockupStudentDataGenrator
+  g++ classImplementation.cpp Main.cpp -o ./Release/MockupStudentDataGenerator ; ./Release/MockupStudentDataGenerator
   ```
   
 ## For bonus:
