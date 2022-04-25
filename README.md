@@ -62,7 +62,7 @@ You can also compile it by MSVC in VS too
   - Lê Trương Kinh Thành - 20120373: 10
 
 ## Demo:
-You can see a mini demo of this project in this link [Youtube](https://www.youtube.com/)
+You can see a mini demo of this project in this link [Youtube](https://youtu.be/dQw4w9WgXcQ)
 
 ## Thanks for visiting us 🤑🤑
 
