@@ -297,7 +297,20 @@ bool MockStudentData::createNewStudent(vector<Student>& students, int numberOfSt
 bool MockStudentData::writeStudentInfo(string filename, vector<Student>& students)
 {
     fstream f(filename, ios::out);
+    for (int i = 0; i < students.size(); i++)
+    {
+        f << "Student: " << students[i].getID() << endl;
+        Name name(students[i].getName());
+        f << "    Name = " << name.getLastName() << " " << name.getMiddleName() << " " << name.getFirstName() << endl;  
+        f << "    GPA = " << students[i].getGPA() << endl;
+        f << "    Telephone = " << students[i].getTelephone() << endl;
+        f << "    Email = " << students[i].getEmail() << endl;
+        Date dateOfBirth(students[i].getDOB());
+        f << "    DOB = " << dateOfBirth.getDay() << "/" << dateOfBirth.getMonth() << "/" << dateOfBirth.getYear() << endl;
+        Address address(students[i].getAddress());
+        f << "    Address = " << address.getHouseNumber() << " " << address.getStreet() << "," << address.getWard() << "," << address.getDistrict() << ", Ho Chi Minh city" << endl;
 
+    }
     return true;
 }
 
