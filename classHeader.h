@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <string>
 #include <cstring>
 #include <ctime>
@@ -184,10 +184,10 @@ public:
 class RandomAddressListGenerator
 {
 private:
-    vector<int> house_number;
-    vector<string> street;
-    vector<string> ward;
-    vector<string> district;
+    vector<int> _house_number;
+    vector<string> _street;
+    vector<string> _ward;
+    vector<string> _district;
 
     RandomIntegerGenerator _rdg;
 
@@ -199,44 +199,136 @@ public:
 
 RandomAddressListGenerator::RandomAddressListGenerator()
 {
-    house_number = {
-        "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"
-    };
-    street = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
-    ward = { "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022" };
-    district = {};
+    _ward = { "An Khánh","An Lợi Đông","An Phú","Bình Chiểu","Bình Thọ","Bình Trưng Đông","Bình Trưng Tây","Cát Lái","Hiệp Bình Chánh","Bến Nghé", "Cầu Kho", "Cầu Ông Lãnh", "Bến Thành", "Cô Giang", "Đa Kao", "Nguyễn Thái Bình", "Phạm Ngũ Lão", "Nguyễn Cư Trinh", "Tân Định", "Phường 1", "Phường 2", "Phường 3", "Phường 4", "Phường 5", "Phường Bình Thuận", "Phường Phú Mỹ", "Phường Phú Thuận", "Phường Tân Hưng", "Phường Tân Kiểng", "An Phú Đông", "Đông Hưng Thuận", "Hiệp Thành", "Tân Chánh Hiệp", "Tân Hưng Thuận", "An Lạc", "Bình Hưng Hòa", "Bình Trị Đông", "Phường Hiệp Tân", "Phường Hòa Thạnh", "Phường Phú Thạnh", "Phường Phú Thọ Hòa", "Phường Phú Trung", "Xã Phạm Văn Hai", "Xã Bình Lợi", "Xã An Thới Đông", "Xã Bình Khánh", "Xã An Phú", "Xã An Nhơn Tây", "Xã Đông Hạnh", "Xã Nhị Bình", "Xã Tân Hưng","Xã Mỹ Lương"};
+    _district = {"Thành phố Thủ Đức", "Quận 1", "Quận 3", "Quận 4", "Quận 5", "Quận 6", "Quận 7", "Quận 8", "Quận 10", "Quận 11", "Quận 12", "Quận Bình Tân", "Quận Bình Thạnh", "Quận Gò Vấp", "Quận Phú Nhuận", "Quận Tân Bình", "Quận Tân Phú", "Huyện Bình Chánh", "Huyện Cần Giờ", "Huyện Củ Chi", "Huyện Hóc Môn", "Huyện Nhà Bè"};
 }
 
 Address RandomAddressListGenerator::next() {
 
-    int index = _rdg.next(_months.size());
-    string month = _months[index];
-
-    string day = "31";
+    int index = _rdg.next(_district.size());
+    string district = _district[index];
 
 
 
-    if (month == "4" || month == "6" || month == "9" || month == "11")
+    if (district == "Thành phố Thủ Đức")
     {
-        while (day == "31") {
-            index = _rdg.next(_days.size());
-            day = _days[index];
-        }
+        int index = _rdg.next(0, 8);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận 1")
+    {
+        int index = _rdg.next(9, 18);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận 3")
+    {
+        int index = _rdg.next(19, 23);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận 4")
+    {
+        int index = _rdg.next(19, 23);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận 5")
+    {
+        int index = _rdg.next(19, 23);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận 6")
+    {
+        int index = _rdg.next(19, 23);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận 7")
+    {
+        int index = _rdg.next(24, 28);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận 8")
+    {
+        int index = _rdg.next(19, 23);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận 10")
+    {
+        int index = _rdg.next(19, 23);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận 11")
+    {
+        int index = _rdg.next(19, 23);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận 12")
+    {
+        int index = _rdg.next(29, 33);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận Bình Tân")
+    {
+        int index = _rdg.next(34, 36);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận Bình Thạnh")
+    {
+        int index = _rdg.next(19, 23);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận Gò Vấp")
+    {
+        int index = _rdg.next(19, 23);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận Phú Nhuận")
+    {
+        int index = _rdg.next(19, 23);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận Tân Bình")
+    {
+        int index = _rdg.next(19, 23);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận Tân Phú")
+    {
+        int index = _rdg.next(37, 41);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận Bình Chánh")
+    {
+        int index = _rdg.next(42, 43);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận Cần Giờ")
+    {
+        int index = _rdg.next(44, 45);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận Củ Chi")
+    {
+        int index = _rdg.next(46, 47);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận Hóc Môn")
+    {
+        int index = _rdg.next(48, 49);
+        string ward = _ward[index];
+    }
+    else if (district == "Quận Nhà Bè")
+    {
+        int index = _rdg.next(50, 51);
+        string ward = _ward[index];
     }
 
-    if (month == "2")
-    {
-        while (day == "31" || day == "30") {
-            index = _rdg.next(_days.size());
-            day = _days[index];
-        }
-    }
 
+    index = _rdg.next(1, 500);
+    int _house_number = index;
 
-    index = _rdg.next(_years.size());
-    string year = _years[index];
+    index = _rdg.next(1, 500);
+    string street = "Duong so " + to_string(index);
 
-    DOB result(day, month, year);
+    Address result(_house_number, _street, _ward, _district);
     return result;
 }
 
