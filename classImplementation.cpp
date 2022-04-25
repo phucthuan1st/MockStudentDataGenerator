@@ -1,5 +1,7 @@
 #include "classHeader.h"
 
+shared_ptr<RandomIntegerGenerator> RandomIntegerGenerator::_instance = nullptr;
+
 RandomIntegerGenerator::RandomIntegerGenerator()
 {
     srand(time(NULL));
@@ -7,7 +9,7 @@ RandomIntegerGenerator::RandomIntegerGenerator()
 
 shared_ptr<RandomIntegerGenerator> RandomIntegerGenerator::instance()
 {
-    if (_instance == NULL)
+    if (_instance == nullptr)
     {
         _instance = make_shared<RandomIntegerGenerator>();
     }

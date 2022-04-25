@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include <string.h>
-#include <cstring>
 #include <ctime>
 #include <vector>
 #include <fstream>
@@ -13,10 +12,10 @@ using namespace std;
 class RandomIntegerGenerator
 {
 private:
-    RandomIntegerGenerator();
-    inline static shared_ptr<RandomIntegerGenerator> _instance = NULL;
+    static shared_ptr<RandomIntegerGenerator> _instance;
 
 public:
+    RandomIntegerGenerator();
     static int next();
     static int next(int);
     static int next(int, int);
