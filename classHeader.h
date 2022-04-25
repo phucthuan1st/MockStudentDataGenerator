@@ -127,9 +127,9 @@ class RandomAddressGenerator
 {
 private:
     vector<int> _house_number;
-    vector<string> _street;
-    vector<string> _ward;
-    vector<string> _district;
+    vector<string> _sample_street;
+    vector<string> _sample_ward;
+    vector<string> _sample_district;
 
 public:
     RandomAddressGenerator();

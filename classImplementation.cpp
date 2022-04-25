@@ -37,9 +37,9 @@ int RandomIntegerGenerator::next(int left, int right)
 
 RandomAddressGenerator::RandomAddressGenerator()
 {
-    _sample_streets = { "Alexandre de Rhodes", "Ba Le Chan", "Calmette", "Ben Chuong Duong", "Bui Thi Xuan", "Bui Vien", "Cach Mang Thang 8", "Cao Ba Nha", "Cao Ba Quat", "Cay Diep", "Chu Manh Chinh", "Co Bac", "Co Giang", "Cong Quynh", "Cong Truong Lam Son", "Cong Truong Me Linh", "Cong Truong Paris", "Dang Dung", "Dang Tat", "Dang Thi Nhu", "Dang Tran Con", "De Tham", "Dien Bien Phu", "Dinh Cong Tranh", "Dinh Tien Hoang", "Do Quang Dau", "Dong Du", "Dong Khoi", "Hai Ba Trung", "Hai Trieu", "Ham Nghi", "Han Thuyen", "Hoa My", "Hoang Sa", "Nguyen Du", "Nguyen Dinh Chieu", "Nguyen Cuu Van", "Nguyen Cu Trinh", "Nguyen Cong Tru", "Nguyen Canh Chan", "Nguyen Binh Khiem", "Nguyen An Ninh", "Ngo Van Nam", "Ngo Quyen", "Ngo Duc Ke", "Nam Quoc Cang", "Mai Thi Luu", "Mac Thi Buoi", "Mac Dinh Chi", "Ma Lo", "Ly Van Phuc", "Ly Thai To", "Ly Chien Thang", "Luu Van Lang", "Luong Huu Khanh", "Le Van Huu", "Le Thi Rieng", "Le Thi Hong Gam", "Le Thanh Ton", "Le Loi", "Le Lai", "Le Duan", "Le Cong Kieu", "Ky Con", "Le Anh Xuan", "Khanh Hoi", "Huynh Thuc Khang", "Huyen Quang ", "Nguyen Hau", "Nguyen Hue", "Nguyen Huu Canh", "Nguyen Huu Cau", "Nguyen Huy Tu", "Nguyen Khac Nhu", "Nguyen Phi Khanh", "Nguyen Sieu", "Nguyen Thai Binh", "Nguyen Thai Hoc" }
-    _sample_wards = { "Ward An Khanh", "Ward An Loi Dong", "Ward An Phu", "Ward Binh Chieu", "Ward Binh Tho", "Ward Binh Trung Đong", "Ward Binh Trung Tay", "Ward Cat Lai", "Ward Hiep Binh Chanh", "Ward Ben Nghe", "Ward Cau Kho", "Ward Cau ong Lanh", "Ward Ben Thanh", "Ward Ca Giang", "Ward Da Kao", "Ward Nguyen Thai Binh", "Ward Pham Ngu Lao", "Ward Nguyen Cu Trinh", "Ward Tan Dinh", "Ward 1", "Ward 2", "Ward 3", "Ward 4", "Ward 5", "Ward Binh Thuan", "Ward Phu My", "Ward Phu Thuan", "Ward Tan Hung", "Ward Tan Kieng", "Ward An Phu Dong", "Ward Dong Hung Thuan", "Ward Hiep Thanh", "Ward Tan Chanh Hiep", "Ward Tan Hung Thuan", "Ward An Lac", "Ward Binh Hung Hoa", "Ward Binh Tri Dong", "Ward Phuong Hiep Tan", "Ward Hoa Thanh", "Ward Phu Thanh", "Ward Phu Tho Hoa", "Ward Phu Trung", "Ward Pham Van Hai", "Ward Binh Loi", "Ward An Thoi Dong", "Ward Binh Khanh", "Ward An Phu", "Ward An Nhon Tay", "Ward Dong Hanh", "Ward Nhi Binh", "Ward Tan Hung", "Ward My Luong" };
-    _sample_districts = { "District Thu Duc", "District 1", "District 3", "District 4", "District 5", "District 6", "District 7", "District 8", "District 10", "District 11", "District 12", "District Binh Tan", "District Binh Thanh", "District Go Vap", "District Phu Nhuan", "District Tan Binh", "District Tan Phu", "District Binh Chanh", "District Can Gio", "District Cu Chi", "District Hoc Mon", "District Nha Be" };
+    _sample_street = {"Alexandre de Rhodes", "Ba Le Chan", "Calmette", "Ben Chuong Duong", "Bui Thi Xuan", "Bui Vien", "Cach Mang Thang 8", "Cao Ba Nha", "Cao Ba Quat", "Cay Diep", "Chu Manh Chinh", "Co Bac", "Co Giang", "Cong Quynh", "Cong Truong Lam Son", "Cong Truong Me Linh", "Cong Truong Paris", "Dang Dung", "Dang Tat", "Dang Thi Nhu", "Dang Tran Con", "De Tham", "Dien Bien Phu", "Dinh Cong Tranh", "Dinh Tien Hoang", "Do Quang Dau", "Dong Du", "Dong Khoi", "Hai Ba Trung", "Hai Trieu", "Ham Nghi", "Han Thuyen", "Hoa My", "Hoang Sa", "Nguyen Du", "Nguyen Dinh Chieu", "Nguyen Cuu Van", "Nguyen Cu Trinh", "Nguyen Cong Tru", "Nguyen Canh Chan", "Nguyen Binh Khiem", "Nguyen An Ninh", "Ngo Van Nam", "Ngo Quyen", "Ngo Duc Ke", "Nam Quoc Cang", "Mai Thi Luu", "Mac Thi Buoi", "Mac Dinh Chi", "Ma Lo", "Ly Van Phuc", "Ly Thai To", "Ly Chien Thang", "Luu Van Lang", "Luong Huu Khanh", "Le Van Huu", "Le Thi Rieng", "Le Thi Hong Gam", "Le Thanh Ton", "Le Loi", "Le Lai", "Le Duan", "Le Cong Kieu", "Ky Con", "Le Anh Xuan", "Khanh Hoi", "Huynh Thuc Khang", "Huyen Quang ", "Nguyen Hau", "Nguyen Hue", "Nguyen Huu Canh", "Nguyen Huu Cau", "Nguyen Huy Tu", "Nguyen Khac Nhu", "Nguyen Phi Khanh", "Nguyen Sieu", "Nguyen Thai Binh", "Nguyen Thai Hoc"};
+    _sample_ward = {"Ward An Khanh", "Ward An Loi Dong", "Ward An Phu", "Ward Binh Chieu", "Ward Binh Tho", "Ward Binh Trung Đong", "Ward Binh Trung Tay", "Ward Cat Lai", "Ward Hiep Binh Chanh", "Ward Ben Nghe", "Ward Cau Kho", "Ward Cau ong Lanh", "Ward Ben Thanh", "Ward Ca Giang", "Ward Da Kao", "Ward Nguyen Thai Binh", "Ward Pham Ngu Lao", "Ward Nguyen Cu Trinh", "Ward Tan Dinh", "Ward 1", "Ward 2", "Ward 3", "Ward 4", "Ward 5", "Ward Binh Thuan", "Ward Phu My", "Ward Phu Thuan", "Ward Tan Hung", "Ward Tan Kieng", "Ward An Phu Dong", "Ward Dong Hung Thuan", "Ward Hiep Thanh", "Ward Tan Chanh Hiep", "Ward Tan Hung Thuan", "Ward An Lac", "Ward Binh Hung Hoa", "Ward Binh Tri Dong", "Ward Phuong Hiep Tan", "Ward Hoa Thanh", "Ward Phu Thanh", "Ward Phu Tho Hoa", "Ward Phu Trung", "Ward Pham Van Hai", "Ward Binh Loi", "Ward An Thoi Dong", "Ward Binh Khanh", "Ward An Phu", "Ward An Nhon Tay", "Ward Dong Hanh", "Ward Nhi Binh", "Ward Tan Hung", "Ward My Luong"};
+    _sample_district = {"District Thu Duc", "District 1", "District 3", "District 4", "District 5", "District 6", "District 7", "District 8", "District 10", "District 11", "District 12", "District Binh Tan", "District Binh Thanh", "District Go Vap", "District Phu Nhuan", "District Tan Binh", "District Tan Phu", "District Binh Chanh", "District Can Gio", "District Cu Chi", "District Hoc Mon", "District Nha Be"};
 }
 
 Address RandomAddressGenerator::next()
@@ -195,7 +195,7 @@ Date RandomDateGenerator::next()
     return result;
 }
 
-tuple<bool, int, string, vector<Student>> MockStudentData::parse(const char* filename)
+tuple<bool, int, string, vector<Student>> MockStudentData::parse(const char *filename)
 {
 
     bool successful = true;
@@ -276,12 +276,12 @@ tuple<bool, int, string, vector<Student>> MockStudentData::parse(const char* fil
     return result;
 }
 
-bool MockStudentData::createNewStudent(vector<Student>& students, int numberOfStudent)
+bool MockStudentData::createNewStudent(vector<Student> &students, int numberOfStudent)
 {
     return true;
 }
 
-bool MockStudentData::writeStudentInfo(string filename, vector<Student>& students)
+bool MockStudentData::writeStudentInfo(string filename, vector<Student> &students)
 {
     fstream f(filename, ios::out);
 
@@ -330,13 +330,13 @@ RandomNameGenerator::RandomNameGenerator()
         "Thao",
         "Tan",
         "Tu",
-        "Ha" };
+        "Ha"};
 
     getSampleLastNames("top_lastname.txt");
     getSampleFirstNames("top_firstname.txt");
 }
 
-void RandomNameGenerator::getSampleLastNames(const char* filename)
+void RandomNameGenerator::getSampleLastNames(const char *filename)
 {
     fstream file(filename, ios::in);
     while (!file.eof())
@@ -350,7 +350,7 @@ void RandomNameGenerator::getSampleLastNames(const char* filename)
     }
 }
 
-void RandomNameGenerator::getSampleFirstNames(const char* filename)
+void RandomNameGenerator::getSampleFirstNames(const char *filename)
 {
     fstream file(filename, ios::in);
     while (!file.eof())
