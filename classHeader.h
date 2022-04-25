@@ -203,7 +203,7 @@ class MockStudentData
 {
 public:
     // parse data from file to an array
-    static tuple<bool, int, string, vector<Student>> parse(const char *filename);
+    static vector<Student> parse(const char *filename);
 
     // add n new random student to students list vector
     static bool createNewStudent(vector<Student> &students, int numberOfStudent);
@@ -224,4 +224,9 @@ class ProgramExecution
 {
 public:
     static int main();
+
+private:
+    static void option_one(vector<Student> &);
+    static void option_two(vector<Student> &);
+    static void option_three(vector<Student> &);
 };

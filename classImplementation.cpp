@@ -45,6 +45,11 @@ RandomAddressGenerator::RandomAddressGenerator()
     _sample_district = {"District Thu Duc", "District 1", "District 3", "District 4", "District 5", "District 6", "District 7", "District 8", "District 10", "District 11", "District 12", "District Binh Tan", "District Binh Thanh", "District Go Vap", "District Phu Nhuan", "District Tan Binh", "District Tan Phu", "District Binh Chanh", "District Can Gio", "District Cu Chi", "District Hoc Mon", "District Nha Be"};
 }
 
+vector<int> RandomAddressGenerator::_house_number = {};
+vector<string> RandomAddressGenerator::_sample_street = {};
+vector<string> RandomAddressGenerator::_sample_ward = {};
+vector<string> RandomAddressGenerator::_sample_district = {};
+
 Address RandomAddressGenerator::next()
 {
     int index = RandomIntegerGenerator::instance()->next(_sample_district.size());
@@ -231,6 +236,10 @@ RandomNameGenerator::RandomNameGenerator()
     getSampleFirstNames("top_firstname.txt");
 }
 
+vector<pair<string, float>> RandomNameGenerator::_sample_firstNames = {};
+vector<string> RandomNameGenerator::_sample_middleNames = {};
+vector<pair<string, float>> RandomNameGenerator::_sample_lastNames = {};
+
 void RandomNameGenerator::getSampleLastNames(const char *filename)
 {
     fstream file(filename, ios::in);
@@ -269,7 +278,7 @@ Name RandomNameGenerator::next()
     // get random first name
     int totalrate = 0;
     int rate = RandomIntegerGenerator::instance()->next(2000000);
-    for (auto it : RandomNameGenerator::_sample_firstNames)
+    for (auto &it : RandomNameGenerator::_sample_firstNames)
     {
         totalrate += it.second;
         if (rate < totalrate)
@@ -285,7 +294,7 @@ Name RandomNameGenerator::next()
     // get random last name
     totalrate = 0;
     rate = RandomIntegerGenerator::instance()->next(1000000);
-    for (auto it : _sample_lastNames)
+    for (auto &it : _sample_lastNames)
     {
         totalrate += it.second;
         if (rate < totalrate)
@@ -353,21 +362,15 @@ string RandomSimpleInfo::nextID()
 //------------------------------------------------------------------//
 
 // mock up data method implementation
-tuple<bool, int, string, vector<Student>> MockStudentData::parse(const char *filename)
+vector<Student> MockStudentData::parse(const char *filename)
 {
-
-    bool successful = true;
-    int errorCode = 0;
-    string message = "";
     vector<Student> students;
 
     fstream file(filename, ios::in | ios::out);
 
     if (!file.is_open())
     {
-        errorCode = 1;
-        successful = false;
-        message = "Read failed: cannot open " + string(filename);
+        cout << "Read failed: cannot open " + string(filename) << endl;
     }
     else
     {
@@ -432,8 +435,7 @@ tuple<bool, int, string, vector<Student>> MockStudentData::parse(const char *fil
 
     file.close();
 
-    auto result = make_tuple(successful, errorCode, message, students);
-    return result;
+    return students;
 }
 
 bool MockStudentData::createNewStudent(vector<Student> &students, int numberOfStudent)
@@ -468,7 +470,7 @@ bool MockStudentData::writeStudentInfo(const char *filename, vector<Student> &st
     }
     else
     {
-        for (auto st : students)
+        for (auto &st : students)
         {
             f << "Student: " << st.id() << endl;
             f << "\tName: " << StringUtils::to_String(st.name()) << endl;
@@ -532,12 +534,13 @@ string StringUtils::to_String(Address address)
     return result;
 }
 
+// student processing data
 double StudentProcessor::averageGPA(vector<Student> &students)
 {
     double GPA = 0.0;
     int num = students.size();
 
-    for (auto st : students)
+    for (auto &st : students)
     {
         GPA += st.gpa() / num;
     }
@@ -551,7 +554,7 @@ vector<Student> StudentProcessor::findAboveAverageStudent(vector<Student> &stude
 
     double avg = StudentProcessor::averageGPA(students);
 
-    for (auto student : students)
+    for (auto &student : students)
     {
         if (student.gpa() > avg)
             result.push_back(student);
@@ -562,7 +565,7 @@ vector<Student> StudentProcessor::findAboveAverageStudent(vector<Student> &stude
 
 void StudentProcessor::printStudentList(vector<Student> &students)
 {
-    for (auto st : students)
+    for (auto &st : students)
     {
         cout << "Student: " << st.id() << endl;
         cout << "\tName: " << StringUtils::to_String(st.name()) << endl;
@@ -574,6 +577,77 @@ void StudentProcessor::printStudentList(vector<Student> &students)
     }
 }
 
+// program execution
+void ProgramExecution::option_one(vector<Student> &students)
+{
+    int num;
+
+    cout << "How many students that you want to add: ";
+    cin >> num;
+
+    bool successful = MockStudentData::createNewStudent(students, num);
+
+    if (successful)
+        cout << "Adding students successfully" << endl;
+    else
+        cout << "Failed to create new students" << endl;
+}
+
+void ProgramExecution::option_two(vector<Student> &students)
+{
+    double averageGPA = StudentProcessor::averageGPA(students);
+
+    cout << "Average GPA: " << averageGPA << endl;
+}
+
+void ProgramExecution::option_three(vector<Student> &students)
+{
+    vector<Student> studentsAboveAverageGPA = StudentProcessor::findAboveAverageStudent(students);
+
+    StudentProcessor::printStudentList(students);
+}
+
 int ProgramExecution::main()
 {
+    const char *filename = "students.txt";
+    vector<Student> students = MockStudentData::parse(filename);
+
+    bool will_continue = true;
+
+    while (will_continue)
+    {
+        system("clear");
+        int choice = -1;
+        cout << "1. Add n mock up data and overwrite file" << endl;
+        cout << "2. Print out the average GPA of students" << endl;
+        cout << "3. Print out all of above average students" << endl;
+        cout << "0. Exit" << endl;
+        cout << "---------------------\nYour choice: ";
+        cin >> choice;
+
+        if (choice == 1)
+        {
+            option_one(students);
+        }
+        else if (choice == 2)
+        {
+            option_two(students);
+        }
+        else if (choice == 3)
+        {
+            option_three(students);
+        }
+        else if (choice == 0)
+        {
+            will_continue = false;
+        }
+        else
+        {
+            cout << "ERROR: Unknown choice" << endl;
+        }
+
+        cin.get();
+    }
+
+    return 0;
 }
