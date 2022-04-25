@@ -305,3 +305,92 @@ vector<string> StringHelper::split(string source, string delimiter)
 
     return result;
 }
+
+RandomNameListGenerator::RandomNameListGenerator()
+{
+    _sample_middleNames = {
+        "Van",
+        "Thi",
+        "Tuong",
+        "Phuc",
+        "Hong",
+        "Minh",
+        "Hoang",
+        "Viet",
+        "Thuy",
+        "Kieu",
+        "Huy",
+        "Lan",
+        "Tuan",
+        "Ngoc",
+        "Phuong",
+        "Anh",
+        "Lam",
+        "Thao",
+        "Tan",
+        "Tu",
+        "Ha"};
+
+    getSampleLastNames("top_lastname.txt");
+    getSampleFirstNames("top_firstname.txt");
+}
+
+void RandomNameListGenerator::getSampleLastNames(const char *filename)
+{
+    fstream file(filename, ios::in);
+    while (!file.eof())
+    {
+        string temp_str;
+        getline(file, temp_str);
+        vector<string> token = StringHelper::split(temp_str, "\t");
+
+        pair<string, double> lastName = make_pair(token[0], stoi(token[1]));
+        _sample_lastNames.push_back(lastName);
+    }
+}
+
+void RandomNameListGenerator::getSampleFirstNames(const char *filename)
+{
+    fstream file(filename, ios::in);
+    while (!file.eof())
+    {
+        string temp_str;
+        getline(file, temp_str);
+        vector<string> token = StringHelper::split(temp_str, "\t");
+
+        pair<string, double> firstName = make_pair(token[0], stoi(token[1]));
+        _sample_firstNames.push_back(firstName);
+    }
+}
+
+Name RandomNameListGenerator::next()
+{
+    Name result;
+    // get random first name
+    int totalrate = 0;
+    int rate = RandomIntegerGenerator::instance()->next(2000000);
+    for (auto it : _sample_firstNames)
+    {
+        totalrate += it.second;
+        if (rate < totalrate)
+        {
+            result.setFirstName(it.first);
+        }
+    }
+
+    // get random middle name
+    int index = RandomIntegerGenerator::instance()->next(_sample_middleNames.size());
+    result.setMiddleName(_sample_middleNames[index]);
+
+    // get random last name
+    totalrate = 0;
+    rate = RandomIntegerGenerator::instance()->next(1000000);
+    for (auto it : _sample_lastNames)
+    {
+        totalrate += it.second;
+        if (rate < totalrate)
+        {
+            result.setLastName(it.first);
+        }
+    }
+}
