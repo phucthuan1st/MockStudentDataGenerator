@@ -35,13 +35,13 @@ int RandomIntegerGenerator::next(int left, int right)
     return result;
 }
 
-RandomAddressListGenerator::RandomAddressListGenerator()
+RandomAddressGenerator::RandomAddressGenerator()
 {
     _ward = {"An Khanh", "An Loi Dong", "An Phu", "Binh Chieu", "Binh Tho", "Binh Trung Đong", "Binh Trung Tay", "Cat Lai", "Hiep Binh Chanh", "Ben Nghe", "Cau Kho", "Cau ong Lanh", "Ben Thanh", "Ca Giang", "Da Kao", "Nguyen Thai Binh", "Pham Ngu Lao", "Nguyen Cu Trinh", "Tan Dinh", "Phuong 1", "Phuong 2", "Phuong 3", "Phuong 4", "Phuong 5", "Phuong Binh Thuan", "Phuong Phu My", "Phuong Phu Thuan", "Phuong Tan Hung", "Phuong Tan Kieng", "An Phu Dong", "Dong Hung Thuan", "Hiep Thanh", "Tan Chanh Hiep", "Tan Hung Thuan", "An Lac", "Binh Hung Hoa", "Binh Tri Dong", "Phuong Hiep Tan", "Phuong Hoa Thanh", "Phuong Phu Thanh", "Phuong Phu Tho Hoa", "Phuong Phu Trung", "Xa Pham Van Hai", "Xa Binh Loi", "Xa An Thoi Dong", "Xa Binh Khanh", "Xa An Phu", "Xa An Nhon Tay", "Xa Dong Hanh", "Xa Nhi Binh", "Xa Tan Hung", "Xa My Luong"};
     _district = {"Thanh pho Thu Duc", "Quan 1", "Quan 3", "Quan 4", "Quan 5", "Quan 6", "Quan 7", "Quan 8", "Quan 10", "Quan 11", "Quan 12", "Quan Binh Tan", "Quan Binh Thanh", "Quan Go Vap", "Quan Phu Nhuan", "Quận Tan Binh", "Quan Tan Phu", "Huyen Binh Chanh", "Huyen Can Gio", "Huyen Cu Chi", "Huyen Hoc Mon", "Huyen Nha Be"};
 }
 
-Address RandomAddressListGenerator::next()
+Address RandomAddressGenerator::next()
 {
     int index = RandomIntegerGenerator::instance()->next(_district.size());
     string district = _district[index];
@@ -168,7 +168,7 @@ Address RandomAddressListGenerator::next()
     return result;
 }
 
-Date RandomDateListGenerator::next()
+Date RandomDateGenerator::next()
 {
 
     int month = RandomIntegerGenerator::instance()->next(1, 12);
@@ -306,7 +306,7 @@ vector<string> StringHelper::split(string source, string delimiter)
     return result;
 }
 
-RandomNameListGenerator::RandomNameListGenerator()
+RandomNameGenerator::RandomNameGenerator()
 {
     _sample_middleNames = {
         "Van",
@@ -335,7 +335,7 @@ RandomNameListGenerator::RandomNameListGenerator()
     getSampleFirstNames("top_firstname.txt");
 }
 
-void RandomNameListGenerator::getSampleLastNames(const char *filename)
+void RandomNameGenerator::getSampleLastNames(const char *filename)
 {
     fstream file(filename, ios::in);
     while (!file.eof())
@@ -349,7 +349,7 @@ void RandomNameListGenerator::getSampleLastNames(const char *filename)
     }
 }
 
-void RandomNameListGenerator::getSampleFirstNames(const char *filename)
+void RandomNameGenerator::getSampleFirstNames(const char *filename)
 {
     fstream file(filename, ios::in);
     while (!file.eof())
@@ -363,7 +363,7 @@ void RandomNameListGenerator::getSampleFirstNames(const char *filename)
     }
 }
 
-Name RandomNameListGenerator::next()
+Name RandomNameGenerator::next()
 {
     Name result;
     // get random first name
@@ -393,4 +393,58 @@ Name RandomNameListGenerator::next()
             result.setLastName(it.first);
         }
     }
+}
+
+string RandomSimpleInfo::nextEmail(Name name)
+{
+    string result = "";
+
+    string lastName = name.getLastName();
+    string firstName = name.getFirstName();
+    string middleName = name.getMiddleName();
+
+    result += lastName[0] + middleName[0] + firstName[0] + "@student.hcmus.edu.vn";
+
+    return result;
+}
+
+double RandomSimpleInfo::nextGPA()
+{
+    double result;
+
+    result = static_cast<double>(RandomIntegerGenerator::instance()->next(100)) / 100;
+
+    return result;
+}
+
+string RandomSimpleInfo::nextTelephoneNumber()
+{
+    string result = "0";
+
+    for (int i = 1; i <= 10; i++)
+    {
+        if (i != 5 && i != 9)
+            result += to_string(RandomIntegerGenerator::instance()->next(9));
+        else
+            result += "-";
+    }
+
+    return result;
+}
+
+string RandomSimpleInfo::nextID()
+{
+    string result = "";
+
+    // year
+    int year = RandomIntegerGenerator::instance()->next(15, 25);
+    result += to_string(year);
+
+    // major
+    int major = RandomIntegerGenerator::instance()->next(10, 25);
+    result += to_string(major);
+
+    // id
+    int id = RandomIntegerGenerator::instance()->next(9999);
+    result += to_string(id);
 }

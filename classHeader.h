@@ -48,10 +48,10 @@ public:
         : _lastName(lastName), _middleName(middleName), _firstName(firstName){};
 };
 
-class RandomNameListGenerator
+class RandomNameGenerator
 {
 private:
-    RandomNameListGenerator();
+    RandomNameGenerator();
 
     vector<pair<string, float>> _sample_firstNames;
     vector<string> _sample_middleNames;
@@ -94,7 +94,7 @@ public:
     Date getDate() const { return Date(day, month, year); }
 };
 
-class RandomDateListGenerator
+class RandomDateGenerator
 {
 public:
     Date next();
@@ -123,7 +123,7 @@ public:
         : house_number(house_number), street(street), ward(ward), district(district){};
 };
 
-class RandomAddressListGenerator
+class RandomAddressGenerator
 {
 private:
     vector<int> _house_number;
@@ -132,7 +132,7 @@ private:
     vector<string> _district;
 
 public:
-    RandomAddressListGenerator();
+    RandomAddressGenerator();
 
     Address next();
     vector<Address> address_next();
@@ -181,6 +181,15 @@ class StringHelper
 {
 public:
     static vector<string> split(string source, string delimiter);
+};
+
+class RandomSimpleInfo
+{
+public:
+    string nextTelephoneNumber();
+    double nextGPA();
+    string nextEmail(Name);
+    string nextID();
 };
 
 class MockStudentData
