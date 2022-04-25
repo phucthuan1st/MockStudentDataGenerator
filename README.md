@@ -1,5 +1,8 @@
 # Mock Student Data Generator
-A data mockup generator
+A data mockup generator. This project is built for learning (OOP) purpose
+
+## About:
+We are FIT@HCMUS student. In OOP, we have a data mock up project, and this is it's implementation.
 
 ## Contributer
 - Nguyễn Phúc Thuần: 20120380 FIT@HCMUS [Github](https://github.com/phucthuan1st/), [Facebook](https://www.facebook.com/phucthuan95/)
