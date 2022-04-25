@@ -207,128 +207,128 @@ Address RandomAddressListGenerator::next() {
 
     int index = _rdg.next(_district.size());
     string district = _district[index];
-
+    string ward = "";
 
 
     if (district == "Thành phố Thủ Đức")
     {
         int index = _rdg.next(0, 8);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận 1")
     {
         int index = _rdg.next(9, 18);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận 3")
     {
         int index = _rdg.next(19, 23);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận 4")
     {
         int index = _rdg.next(19, 23);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận 5")
     {
         int index = _rdg.next(19, 23);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận 6")
     {
         int index = _rdg.next(19, 23);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận 7")
     {
         int index = _rdg.next(24, 28);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận 8")
     {
         int index = _rdg.next(19, 23);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận 10")
     {
         int index = _rdg.next(19, 23);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận 11")
     {
         int index = _rdg.next(19, 23);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận 12")
     {
         int index = _rdg.next(29, 33);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận Bình Tân")
     {
         int index = _rdg.next(34, 36);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận Bình Thạnh")
     {
         int index = _rdg.next(19, 23);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận Gò Vấp")
     {
         int index = _rdg.next(19, 23);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận Phú Nhuận")
     {
         int index = _rdg.next(19, 23);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận Tân Bình")
     {
         int index = _rdg.next(19, 23);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận Tân Phú")
     {
         int index = _rdg.next(37, 41);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận Bình Chánh")
     {
         int index = _rdg.next(42, 43);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận Cần Giờ")
     {
         int index = _rdg.next(44, 45);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận Củ Chi")
     {
         int index = _rdg.next(46, 47);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận Hóc Môn")
     {
         int index = _rdg.next(48, 49);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
     else if (district == "Quận Nhà Bè")
     {
         int index = _rdg.next(50, 51);
-        string ward = _ward[index];
+        ward = _ward[index];
     }
 
 
     index = _rdg.next(1, 500);
-    int _house_number = index;
+    int house_number = index;
 
     index = _rdg.next(1, 500);
     string street = "Duong so " + to_string(index);
 
-    Address result(_house_number, _street, _ward, _district);
+    Address result(house_number, street, ward, district);
     return result;
 }
 
