@@ -112,9 +112,9 @@ int RandomIntegerGenerator::next(int left, int right) {
 class RandomDateListGenerator
 {
 private:
-    vector<string> _days;
-    vector<string> _months;
-    vector<string> _years;
+    vector<int> _days;
+    vector<int> _months;
+    vector<int> _years;
     RandomIntegerGenerator _rdg;
 
 public:
