@@ -28,6 +28,31 @@ We are FIT@HCMUS student. In OOP, we have a data mock up project, and this is it
 - Display average GPA of all student
 - Print out all student that have GPA greater than average
 
+## To compile and build this project, you should follow these instruction:
+1. Clone this repository to your local
+```shellscript
+git clone https://github.com/phucthuan1st/MockStudentDataGenerator/
+```
+If your PC do not have git yet, just install it [Git install instruction](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+2. Start a command promt or terminal in your folder repository (or using cd command)
+
+3. Compile source file using c++ compiler (such as mingw c++ as below)
+```shellscript
+g++ classImplementation.cpp Main.cpp -o ./Release/MockupStudentDataGenrator
+```
+You can also compile it by MSVC in VS too
+
+4. Open executive file in Release folder or type command to terminal: 
+```shellscript
+./Release/MockupStudentDataGenrator
+```
+
+  You can combine step 3 and 4 like following:
+  ```shellscript
+  g++ classImplementation.cpp Main.cpp -o ./Release/MockupStudentDataGenrator ; ./Release/MockupStudentDataGenrator
+  ```
+  
 ## For bonus:
   We use github to manage our code from the beginning of this project, because we think it will useful for further career. We think we could get a bit of bonus 🤣
   
