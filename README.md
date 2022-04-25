@@ -2,7 +2,7 @@
 A data mockup generator
 
 ## Contributer
-- Nguyễn Phúc Thuần: 20120380 FIT@HCMUS [Github](https://github.com/phucthuan1st/) [Facebook](https://www.facebook.com/phucthuan95/)
+- Nguyễn Phúc Thuần: 20120380 FIT@HCMUS [Github](https://github.com/phucthuan1st/), [Facebook](https://www.facebook.com/phucthuan95/)
 - Lê Trương Kinh Thành: 20120373 FIT@HCMUS [Github](https://github.com/KinhThanh38), [Facebook](https://www.facebook.com/kinhthanh.letruong.3)
 
 ## Many thanks to
