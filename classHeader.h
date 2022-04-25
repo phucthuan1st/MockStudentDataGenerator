@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include <string.h>
 #include <ctime>
 #include <vector>
@@ -73,6 +73,22 @@ private:
     int year;
 
 public:
+
+    int getDay()
+    {
+        return day;
+    }
+
+    int getMonth()
+    {
+        return month;
+    }
+
+    int getYear()
+    {
+        return year;
+    }
+
     void setDay(int _day)
     {
         day = _day;
@@ -116,6 +132,26 @@ public:
 
     void setWard(string _ward) { ward = _ward; }
     void setDistrict(string _district) { district = _district; }
+
+    int getHouseNumber()
+    {
+        return house_number;
+    }
+
+    string getStreet()
+    {
+        return street;
+    }
+
+    string getWard()
+    {
+        return ward;
+    }
+
+    string getDistrict()
+    {
+        return district;
+    }
 
     Address() : house_number(0), street(""), ward(""), district(""){};
 
@@ -175,6 +211,35 @@ public:
     void setDOB(Date DOB) { _day_of_birth = DOB; }
 
     void setAddress(Address address) { _address = address; }
+
+    string getID() {
+        return _id;
+    }
+
+    string getName() {
+        return _name;
+    }
+
+    double getGPA() {
+        return _GPA;
+    }
+
+    string getTelephone() {
+        return _telephone;
+    }
+
+    string getEmail() {
+        return _email;
+    }
+
+    Date getDOB() {
+        return _day_of_birth;
+    }
+
+    Address getAddress() {
+        return _address;
+    }
+
 };
 
 class StringHelper
