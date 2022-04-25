@@ -199,8 +199,8 @@ public:
 
 RandomAddressListGenerator::RandomAddressListGenerator()
 {
-    _ward = { "An Khánh","An Lợi Đông","An Phú","Bình Chiểu","Bình Thọ","Bình Trưng Đông","Bình Trưng Tây","Cát Lái","Hiệp Bình Chánh","Bến Nghé", "Cầu Kho", "Cầu Ông Lãnh", "Bến Thành", "Cô Giang", "Đa Kao", "Nguyễn Thái Bình", "Phạm Ngũ Lão", "Nguyễn Cư Trinh", "Tân Định", "Phường 1", "Phường 2", "Phường 3", "Phường 4", "Phường 5", "Phường Bình Thuận", "Phường Phú Mỹ", "Phường Phú Thuận", "Phường Tân Hưng", "Phường Tân Kiểng", "An Phú Đông", "Đông Hưng Thuận", "Hiệp Thành", "Tân Chánh Hiệp", "Tân Hưng Thuận", "An Lạc", "Bình Hưng Hòa", "Bình Trị Đông", "Phường Hiệp Tân", "Phường Hòa Thạnh", "Phường Phú Thạnh", "Phường Phú Thọ Hòa", "Phường Phú Trung", "Xã Phạm Văn Hai", "Xã Bình Lợi", "Xã An Thới Đông", "Xã Bình Khánh", "Xã An Phú", "Xã An Nhơn Tây", "Xã Đông Hạnh", "Xã Nhị Bình", "Xã Tân Hưng","Xã Mỹ Lương"};
-    _district = {"Thành phố Thủ Đức", "Quận 1", "Quận 3", "Quận 4", "Quận 5", "Quận 6", "Quận 7", "Quận 8", "Quận 10", "Quận 11", "Quận 12", "Quận Bình Tân", "Quận Bình Thạnh", "Quận Gò Vấp", "Quận Phú Nhuận", "Quận Tân Bình", "Quận Tân Phú", "Huyện Bình Chánh", "Huyện Cần Giờ", "Huyện Củ Chi", "Huyện Hóc Môn", "Huyện Nhà Bè"};
+    _ward = { "An Khanh","An Loi Dong","An Phu","Binh Chieu","Binh Tho","Binh Trung Đong","Binh Trung Tay","Cat Lai","Hiep Binh Chanh","Ben Nghe", "Cau Kho", "Cau ong Lanh", "Ben Thanh", "Ca Giang", "Da Kao", "Nguyen Thai Binh", "Pham Ngu Lao", "Nguyen Cu Trinh", "Tan Dinh", "Phuong 1", "Phuong 2", "Phuong 3", "Phuong 4", "Phuong 5", "Phuong Binh Thuan", "Phuong Phu My", "Phuong Phu Thuan", "Phuong Tan Hung", "Phuong Tan Kieng", "An Phu Dong", "Dong Hung Thuan", "Hiep Thanh", "Tan Chanh Hiep", "Tan Hung Thuan", "An Lac", "Binh Hung Hoa", "Binh Tri Dong", "Phuong Hiep Tan", "Phuong Hoa Thanh", "Phuong Phu Thanh", "Phuong Phu Tho Hoa", "Phuong Phu Trung", "Xa Pham Van Hai", "Xa Binh Loi", "Xa An Thoi Dong", "Xa Binh Khanh", "Xa An Phu", "Xa An Nhon Tay", "Xa Dong Hanh", "Xa Nhi Binh", "Xa Tan Hung","Xa My Luong"};
+    _district = {"Thanh pho Thu Duc", "Quan 1", "Quan 3", "Quan 4", "Quan 5", "Quan 6", "Quan 7", "Quan 8", "Quan 10", "Quan 11", "Quan 12", "Quan Binh Tan", "Quan Binh Thanh", "Quan Go Vap", "Quan Phu Nhuan", "Quận Tan Binh", "Quan Tan Phu", "Huyen Binh Chanh", "Huyen Can Gio", "Huyen Cu Chi", "Huyen Hoc Mon", "Huyen Nha Be"};
 }
 
 Address RandomAddressListGenerator::next() {
@@ -210,112 +210,112 @@ Address RandomAddressListGenerator::next() {
     string ward = "";
 
 
-    if (district == "Thành phố Thủ Đức")
+    if (district == "Thanh pho Thu Duc")
     {
         int index = _rdg.next(0, 8);
         ward = _ward[index];
     }
-    else if (district == "Quận 1")
+    else if (district == "Quan 1")
     {
         int index = _rdg.next(9, 18);
         ward = _ward[index];
     }
-    else if (district == "Quận 3")
+    else if (district == "Quan 3")
     {
         int index = _rdg.next(19, 23);
         ward = _ward[index];
     }
-    else if (district == "Quận 4")
+    else if (district == "Quan 4")
     {
         int index = _rdg.next(19, 23);
         ward = _ward[index];
     }
-    else if (district == "Quận 5")
+    else if (district == "Quan 5")
     {
         int index = _rdg.next(19, 23);
         ward = _ward[index];
     }
-    else if (district == "Quận 6")
+    else if (district == "Quan 6")
     {
         int index = _rdg.next(19, 23);
         ward = _ward[index];
     }
-    else if (district == "Quận 7")
+    else if (district == "Quan 7")
     {
         int index = _rdg.next(24, 28);
         ward = _ward[index];
     }
-    else if (district == "Quận 8")
+    else if (district == "Quan 8")
     {
         int index = _rdg.next(19, 23);
         ward = _ward[index];
     }
-    else if (district == "Quận 10")
+    else if (district == "Quan 10")
     {
         int index = _rdg.next(19, 23);
         ward = _ward[index];
     }
-    else if (district == "Quận 11")
+    else if (district == "Quan 11")
     {
         int index = _rdg.next(19, 23);
         ward = _ward[index];
     }
-    else if (district == "Quận 12")
+    else if (district == "Quan 12")
     {
         int index = _rdg.next(29, 33);
         ward = _ward[index];
     }
-    else if (district == "Quận Bình Tân")
+    else if (district == "Quan Binh Tan")
     {
         int index = _rdg.next(34, 36);
         ward = _ward[index];
     }
-    else if (district == "Quận Bình Thạnh")
+    else if (district == "Quan Binh Thanh")
     {
         int index = _rdg.next(19, 23);
         ward = _ward[index];
     }
-    else if (district == "Quận Gò Vấp")
+    else if (district == "Quan Go Vap")
     {
         int index = _rdg.next(19, 23);
         ward = _ward[index];
     }
-    else if (district == "Quận Phú Nhuận")
+    else if (district == "Quan Phu Nhuan")
     {
         int index = _rdg.next(19, 23);
         ward = _ward[index];
     }
-    else if (district == "Quận Tân Bình")
+    else if (district == "Quan Tan Binh")
     {
         int index = _rdg.next(19, 23);
         ward = _ward[index];
     }
-    else if (district == "Quận Tân Phú")
+    else if (district == "Quan Tan Phu")
     {
         int index = _rdg.next(37, 41);
         ward = _ward[index];
     }
-    else if (district == "Quận Bình Chánh")
+    else if (district == "Quan Binh Chanh")
     {
         int index = _rdg.next(42, 43);
         ward = _ward[index];
     }
-    else if (district == "Quận Cần Giờ")
+    else if (district == "Quan Can Gio")
     {
         int index = _rdg.next(44, 45);
         ward = _ward[index];
     }
-    else if (district == "Quận Củ Chi")
+    else if (district == "Quan Cu Chi")
     {
         int index = _rdg.next(46, 47);
         ward = _ward[index];
     }
-    else if (district == "Quận Hóc Môn")
+    else if (district == "Quan Hoc Mon")
     {
         int index = _rdg.next(48, 49);
         ward = _ward[index];
     }
-    else if (district == "Quận Nhà Bè")
+    else if (district == "Quan Nha Be")
     {
         int index = _rdg.next(50, 51);
         ward = _ward[index];

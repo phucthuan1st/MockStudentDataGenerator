@@ -32,3 +32,9 @@
 *.app
 /.vs
 
+/Debug
+/x64/Debug
+/MockStudentDataGenerator.sln
+/MockStudentDataGenerator.vcxproj
+/MockStudentDataGenerator.vcxproj.filters
+/MockStudentDataGenerator.vcxproj.user
