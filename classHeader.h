@@ -6,6 +6,7 @@
 #include <fstream>
 #include <tuple>
 #include <utility>
+#include <memory>
 
 using namespace std;
 
@@ -13,14 +14,14 @@ class RandomIntegerGenerator
 {
 private:
     RandomIntegerGenerator();
-    inline static RandomIntegerGenerator *_instance = NULL;
+    inline static shared_ptr<RandomIntegerGenerator> _instance = NULL;
 
 public:
     static int next();
     static int next(int);
     static int next(int, int);
 
-    static RandomIntegerGenerator *instance();
+    static shared_ptr<RandomIntegerGenerator> instance();
 };
 
 class Name
@@ -31,35 +32,17 @@ private:
     std::string _middleName;
 
 public:
-    string getFirstName()
-    {
-        return _firstName;
-    }
+    string getFirstName() { return _firstName; }
 
-    string getMiddleName()
-    {
-        return _middleName;
-    }
+    string getMiddleName() { return _middleName; }
 
-    string getLastName()
-    {
-        return _lastName;
-    }
+    string getLastName() { return _lastName; }
 
-    void setFirstName(string firstName)
-    {
-        _firstName = firstName;
-    }
+    void setFirstName(string firstName) { _firstName = firstName; };
 
-    void setLastName(string lastName)
-    {
-        _lastName = lastName;
-    }
+    void setLastName(string lastName) { _lastName = lastName; }
 
-    void setMiddleName(string middleName)
-    {
-        _middleName = middleName;
-    }
+    void setMiddleName(string middleName) { _middleName = middleName; }
 
     Name() : _firstName(""), _lastName(""), _middleName(""){};
     Name(std::string lastName, std::string middleName, std::string firstName)
@@ -89,7 +72,9 @@ private:
         "Anh",
         "Lam",
         "Thao",
-        "Tan"};
+        "Tan",
+        "Tu",
+        "Ha"};
     vector<pair<string, float>> _sample_lastNames;
 
     void getSampleFirstNames(const char *filename);
@@ -145,24 +130,12 @@ private:
     std::string district;
 
 public:
-    void setHouseNumber(int _house_number)
-    {
-        house_number = _house_number;
-    }
+    void setHouseNumber(int _house_number) { house_number = _house_number; }
 
-    void setStreet(string _street)
-    {
-        street = _street;
-    }
+    void setStreet(string _street) { street = _street; }
 
-    void setWard(string _ward)
-    {
-        ward = _ward;
-    }
-    void setDistrict(string _district)
-    {
-        district = _district;
-    }
+    void setWard(string _ward) { ward = _ward; }
+    void setDistrict(string _district) { district = _district; }
 
     Address() : house_number(0), street(""), ward(""), district(""){};
 
@@ -209,41 +182,24 @@ public:
         _address = address;
     }
 
-    void setID(string id)
-    {
-        _id = id;
-    }
+    void setID(string id) { _id = id; }
 
-    void setName(Name name)
-    {
-        _name = name;
-    }
+    void setName(Name name) { _name = name; }
 
-    void setGPA(double GPA)
-    {
-        _GPA = GPA;
-    }
-    void setTelephone(string telephone)
-    {
-        _telephone = telephone;
-    }
-    void setEmail(string email)
-    {
-        _email = email;
-    }
-    void setDOB(Date DOB)
-    {
-        _day_of_birth = DOB;
-    }
+    void setGPA(double GPA) { _GPA = GPA; }
 
-    void setAddress(Address address)
-    {
-        _address = address;
-    }
+    void setTelephone(string telephone) { _telephone = telephone; }
+
+    void setEmail(string email) { _email = email; }
+
+    void setDOB(Date DOB) { _day_of_birth = DOB; }
+
+    void setAddress(Address address) { _address = address; }
 };
 
 class StringHelper
 {
+public:
     static vector<string> split(string source, string delimiter);
 };
 

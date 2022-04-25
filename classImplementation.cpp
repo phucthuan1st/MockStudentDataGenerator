@@ -5,11 +5,11 @@ RandomIntegerGenerator::RandomIntegerGenerator()
     srand(time(NULL));
 }
 
-RandomIntegerGenerator *RandomIntegerGenerator::instance()
+shared_ptr<RandomIntegerGenerator> RandomIntegerGenerator::instance()
 {
     if (_instance == NULL)
     {
-        _instance = new RandomIntegerGenerator();
+        _instance = make_shared<RandomIntegerGenerator>();
     }
 
     return _instance;
@@ -215,19 +215,57 @@ tuple<bool, int, string, vector<Student>> MockStudentData::parse(const char *fil
             Student student;
 
             string temp_str;
+            int id_size = 8;
             // get ID of student
             getline(file, temp_str);
+            vector<string> token = StringHelper::split(temp_str, " ");
+            student.setID(token[1]);
+
             // get Name
+            getline(file, temp_str);
+            token = StringHelper::split(temp_str, " = ");
+
+            string name = token[1];
+            vector<string> names = StringHelper::split(name, " ");
+            student.setName(Name(names[0], names[1], names[2]));
 
             // get GPA
+            getline(file, temp_str);
+            token = StringHelper::split(temp_str, " = ");
+            student.setGPA(stod(token[1]));
 
             // get Telephone
+            getline(file, temp_str);
+            token = StringHelper::split(temp_str, " = ");
+            student.setTelephone(token[1]);
 
             // get Email
+            getline(file, temp_str);
+            token = StringHelper::split(temp_str, " = ");
+            student.setEmail(token[1]);
 
             // get DOB
+            getline(file, temp_str);
+            token = StringHelper::split(temp_str, " = ");
+
+            string date = token[1];
+            token = StringHelper::split(temp_str, "/");
+            Date DOB(stoi(token[0]), stoi(token[1]), stoi(token[2]));
+            student.setDOB(DOB);
 
             // get Address
+            getline(file, temp_str);
+            token = StringHelper::split(temp_str, " = ");
+
+            token = StringHelper::split(token[1], ", ");
+
+            string num_street = token[0];
+            string num = num_street.substr(0, num_street.find(" "));
+            string street = num_street.substr(num_street.find(" ") + 1, num_street.length() - num_street.find(" "));
+            string ward = token[1];
+            string district = token[2];
+
+            student.setAddress(Address(stoi(num), street, ward, district));
         }
     }
 
