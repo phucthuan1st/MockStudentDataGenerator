@@ -5,6 +5,16 @@ RandomIntegerGenerator::RandomIntegerGenerator()
     srand(time(NULL));
 }
 
+RandomIntegerGenerator *RandomIntegerGenerator::instance()
+{
+    if (_instance == NULL)
+    {
+        _instance = new RandomIntegerGenerator();
+    }
+
+    return _instance;
+}
+
 int RandomIntegerGenerator::next()
 {
     int result = rand();
@@ -31,125 +41,125 @@ RandomAddressListGenerator::RandomAddressListGenerator()
 
 Address RandomAddressListGenerator::next()
 {
-    int index = RandomIntegerGenerator::next(_district.size());
+    int index = RandomIntegerGenerator::instance()->next(_district.size());
     string district = _district[index];
     string ward = "";
 
     if (district == "Thanh pho Thu Duc")
     {
-        int index = RandomIntegerGenerator::next(0, 8);
+        int index = RandomIntegerGenerator::instance()->next(0, 8);
         ward = _ward[index];
     }
     else if (district == "Quan 1")
     {
-        int index = RandomIntegerGenerator::next(9, 18);
+        int index = RandomIntegerGenerator::instance()->next(9, 18);
         ward = _ward[index];
     }
     else if (district == "Quan 3")
     {
-        int index = RandomIntegerGenerator::next(19, 23);
+        int index = RandomIntegerGenerator::instance()->next(19, 23);
         ward = _ward[index];
     }
     else if (district == "Quan 4")
     {
-        int index = RandomIntegerGenerator::next(19, 23);
+        int index = RandomIntegerGenerator::instance()->next(19, 23);
         ward = _ward[index];
     }
     else if (district == "Quan 5")
     {
-        int index = RandomIntegerGenerator::next(19, 23);
+        int index = RandomIntegerGenerator::instance()->next(19, 23);
         ward = _ward[index];
     }
     else if (district == "Quan 6")
     {
-        int index = RandomIntegerGenerator::next(19, 23);
+        int index = RandomIntegerGenerator::instance()->next(19, 23);
         ward = _ward[index];
     }
     else if (district == "Quan 7")
     {
-        int index = RandomIntegerGenerator::next(24, 28);
+        int index = RandomIntegerGenerator::instance()->next(24, 28);
         ward = _ward[index];
     }
     else if (district == "Quan 8")
     {
-        int index = RandomIntegerGenerator::next(19, 23);
+        int index = RandomIntegerGenerator::instance()->next(19, 23);
         ward = _ward[index];
     }
     else if (district == "Quan 10")
     {
-        int index = RandomIntegerGenerator::next(19, 23);
+        int index = RandomIntegerGenerator::instance()->next(19, 23);
         ward = _ward[index];
     }
     else if (district == "Quan 11")
     {
-        int index = RandomIntegerGenerator::next(19, 23);
+        int index = RandomIntegerGenerator::instance()->next(19, 23);
         ward = _ward[index];
     }
     else if (district == "Quan 12")
     {
-        int index = RandomIntegerGenerator::next(29, 33);
+        int index = RandomIntegerGenerator::instance()->next(29, 33);
         ward = _ward[index];
     }
     else if (district == "Quan Binh Tan")
     {
-        int index = RandomIntegerGenerator::next(34, 36);
+        int index = RandomIntegerGenerator::instance()->next(34, 36);
         ward = _ward[index];
     }
     else if (district == "Quan Binh Thanh")
     {
-        int index = RandomIntegerGenerator::next(19, 23);
+        int index = RandomIntegerGenerator::instance()->next(19, 23);
         ward = _ward[index];
     }
     else if (district == "Quan Go Vap")
     {
-        int index = RandomIntegerGenerator::next(19, 23);
+        int index = RandomIntegerGenerator::instance()->next(19, 23);
         ward = _ward[index];
     }
     else if (district == "Quan Phu Nhuan")
     {
-        int index = RandomIntegerGenerator::next(19, 23);
+        int index = RandomIntegerGenerator::instance()->next(19, 23);
         ward = _ward[index];
     }
     else if (district == "Quan Tan Binh")
     {
-        int index = RandomIntegerGenerator::next(19, 23);
+        int index = RandomIntegerGenerator::instance()->next(19, 23);
         ward = _ward[index];
     }
     else if (district == "Quan Tan Phu")
     {
-        int index = RandomIntegerGenerator::next(37, 41);
+        int index = RandomIntegerGenerator::instance()->next(37, 41);
         ward = _ward[index];
     }
     else if (district == "Quan Binh Chanh")
     {
-        int index = RandomIntegerGenerator::next(42, 43);
+        int index = RandomIntegerGenerator::instance()->next(42, 43);
         ward = _ward[index];
     }
     else if (district == "Quan Can Gio")
     {
-        int index = RandomIntegerGenerator::next(44, 45);
+        int index = RandomIntegerGenerator::instance()->next(44, 45);
         ward = _ward[index];
     }
     else if (district == "Quan Cu Chi")
     {
-        int index = RandomIntegerGenerator::next(46, 47);
+        int index = RandomIntegerGenerator::instance()->next(46, 47);
         ward = _ward[index];
     }
     else if (district == "Quan Hoc Mon")
     {
-        int index = RandomIntegerGenerator::next(48, 49);
+        int index = RandomIntegerGenerator::instance()->next(48, 49);
         ward = _ward[index];
     }
     else if (district == "Quan Nha Be")
     {
-        int index = RandomIntegerGenerator::next(50, 51);
+        int index = RandomIntegerGenerator::instance()->next(50, 51);
         ward = _ward[index];
     }
 
-    index = RandomIntegerGenerator::next(1, 500);
+    index = RandomIntegerGenerator::instance()->next(1, 500);
     int house_number = index;
 
-    index = RandomIntegerGenerator::next(1, 500);
+    index = RandomIntegerGenerator::instance()->next(1, 500);
     string street = "Duong so " + to_string(index);
 
     Address result(house_number, street, ward, district);
@@ -159,24 +169,24 @@ Address RandomAddressListGenerator::next()
 Date RandomDateListGenerator::next()
 {
 
-    int month = RandomIntegerGenerator::next(1, 12);
+    int month = RandomIntegerGenerator::instance()->next(1, 12);
 
     int day = 31;
 
     if (month == 4 || month == 6 || month == 9 || month == 11)
     {
-        day = RandomIntegerGenerator::next(1, 30);
+        day = RandomIntegerGenerator::instance()->next(1, 30);
     }
 
     if (month == 2)
     {
         while (day == 31 || day == 30)
         {
-            day = RandomIntegerGenerator::next(1, 28);
+            day = RandomIntegerGenerator::instance()->next(1, 28);
         }
     }
 
-    int year = RandomIntegerGenerator::next(1990, 2022);
+    int year = RandomIntegerGenerator::instance()->next(1990, 2022);
 
     Date result(day, month, year);
     return result;
@@ -202,71 +212,22 @@ tuple<bool, int, string, vector<Student>> MockStudentData::parse(const char *fil
     {
         while (!file.eof())
         {
-            Name name;
             Student student;
-            for (int i = 0; i < 7; i++)
-            {
-                string temp;
-                getline(file, temp);
-                if (i == 0)
-                {
-                    student.setID(temp.substr(9, temp.length()));
-                }
-                if (i == 1)
-                {
-                    string temp1;
-                    temp1 = temp.substr(11, temp.length() - 11);
-                    temp1 = strtok(strdup(temp1.c_str()), " ");
-                    name.setLastName(temp1);
-                    temp1 = strtok(NULL, " ");
-                    name.setMiddleName(temp1);
-                    temp1 = strtok(NULL, " ");
-                    name.setFirstName(temp1);
-                    student.setName(name);
-                }
-                if (i == 2)
-                {
-                    student.setGPA(stod(temp.substr(10, temp.length() - 10)));
-                }
-                if (i == 3)
-                {
-                    student.setTelephone(temp.substr(16, temp.length() - 16));
-                }
-                if (i == 4)
-                {
-                    student.setEmail(temp.substr(12, temp.length() - 12));
-                }
-                if (i == 5)
-                {
-                    Date date;
-                    string temp1;
-                    temp1 = temp.substr(10, temp.length() - 10);
-                    temp1 = strtok(strdup(temp1.c_str()), "/");
-                    date.setDay(stoi(temp1));
-                    temp1 = strtok(NULL, "/");
-                    date.setMonth(stoi(temp1));
-                    temp1 = strtok(NULL, "/");
-                    date.setYear(stoi(temp1));
-                    student.setDOB(date);
-                }
-                if (i == 6)
-                {
-                    Address address;
-                    string temp1;
-                    temp1 = temp.substr(14, temp.length() - 14);
-                    temp1 = strtok(strdup(temp1.c_str()), " ");
-                    address.setHouseNumber(stoi(temp1));
-                    temp1 = strtok(NULL, ",");
-                    address.setStreet(temp1);
-                    temp1 = strtok(NULL, ",");
-                    address.setWard(temp1);
-                    temp1 = strtok(NULL, ",");
-                    address.setDistrict(temp1);
-                    student.setAddress(address);
-                }
-            }
 
-            students.push_back(student);
+            string temp_str;
+            // get ID of student
+            getline(file, temp_str);
+            // get Name
+
+            // get GPA
+
+            // get Telephone
+
+            // get Email
+
+            // get DOB
+
+            // get Address
         }
     }
 

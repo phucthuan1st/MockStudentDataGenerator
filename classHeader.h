@@ -11,13 +11,16 @@ using namespace std;
 
 class RandomIntegerGenerator
 {
-public:
+private:
     RandomIntegerGenerator();
+    inline static RandomIntegerGenerator *_instance = NULL;
 
 public:
     static int next();
     static int next(int);
     static int next(int, int);
+
+    static RandomIntegerGenerator *instance();
 };
 
 class Name
