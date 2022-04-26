@@ -5,8 +5,14 @@ A data mockup generator. This project is built for learning (OOP) purpose
 We are FIT@HCMUS student. In OOP, we have a data mock up project, and this is it's implementation.
 
 ## Contributer
-- Nguyễn Phúc Thuần: 20120380 FIT@HCMUS [Github](https://github.com/phucthuan1st/), [Facebook](https://www.facebook.com/phucthuan95/)
-- Lê Trương Kinh Thành: 20120373 FIT@HCMUS [Github](https://github.com/KinhThanh38), [Facebook](https://www.facebook.com/kinhthanh.letruong.3)
+- Nguyễn Phúc Thuần: 
+  - ID: 20120380  
+  - [Github](https://github.com/phucthuan1st/),
+  - [Facebook](https://www.facebook.com/phucthuan95/)
+- Lê Trương Kinh Thành: 
+  - 20120373  
+  - [Github](https://github.com/KinhThanh38), 
+  - [Facebook](https://www.facebook.com/kinhthanh.letruong.3)
 
 ## Many thanks to
 - Mr. Trần Duy Quang
