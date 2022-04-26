@@ -54,7 +54,10 @@ You can also compile it by MSVC in VS too
   ```
   
 ## For bonus:
-  We use github to manage our code from the beginning of this project, because we think it will useful for further career. We think we could get a bit of bonus 🤣
+- We use github to manage our code from the beginning of this project, because we think it will useful for further career.
+- We use some design pattern
+- We build everything in class
+We think we could get a bit of bonus 🤣
   
 ## Expected grade
   We share same role, and do complete the project, so we expect to get 10 for each
