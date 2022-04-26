@@ -314,6 +314,8 @@ Name RandomNameGenerator::next()
             result.setLastName(it.first);
         }
     }
+
+    return result;
 }
 //-------------------------------------------------------------------//
 
@@ -370,6 +372,8 @@ string RandomSimpleInfo::nextID()
     // id
     int id = RandomIntegerGenerator::instance()->next(9999);
     result += to_string(id);
+
+    return result;
 }
 //------------------------------------------------------------------//
 
