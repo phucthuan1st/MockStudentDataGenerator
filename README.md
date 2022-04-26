@@ -73,5 +73,8 @@ We think we could get a bit of bonus 🤣
 ## Demo:
 You can see a mini demo of this project in this link [Youtube](https://youtu.be/dQw4w9WgXcQ)
 
+## Note
+There is no note at this time
+
 ## Thanks for visiting us 🤑🤑
 
