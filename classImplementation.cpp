@@ -38,6 +38,19 @@ int RandomIntegerGenerator::next(int left, int right)
 //--------------------------------------------------------------------//
 
 // address a randomizer
+shared_ptr<RandomAddressGenerator> RandomAddressGenerator::_instance = nullptr;
+
+shared_ptr<RandomAddressGenerator> RandomAddressGenerator::instance()
+{
+    if (_instance == nullptr)
+    {
+        _instance = make_shared<RandomAddressGenerator>();
+        
+    }
+
+    return _instance;
+}
+
 RandomAddressGenerator::RandomAddressGenerator()
 {
     _sample_street = {"Alexandre de Rhodes", "Ba Le Chan", "Calmette", "Ben Chuong Duong", "Bui Thi Xuan", "Bui Vien", "Cach Mang Thang 8", "Cao Ba Nha", "Cao Ba Quat", "Cay Diep", "Chu Manh Chinh", "Co Bac", "Co Giang", "Cong Quynh", "Cong Truong Lam Son", "Cong Truong Me Linh", "Cong Truong Paris", "Dang Dung", "Dang Tat", "Dang Thi Nhu", "Dang Tran Con", "De Tham", "Dien Bien Phu", "Dinh Cong Tranh", "Dinh Tien Hoang", "Do Quang Dau", "Dong Du", "Dong Khoi", "Hai Ba Trung", "Hai Trieu", "Ham Nghi", "Han Thuyen", "Hoa My", "Hoang Sa", "Nguyen Du", "Nguyen Dinh Chieu", "Nguyen Cuu Van", "Nguyen Cu Trinh", "Nguyen Cong Tru", "Nguyen Canh Chan", "Nguyen Binh Khiem", "Nguyen An Ninh", "Ngo Van Nam", "Ngo Quyen", "Ngo Duc Ke", "Nam Quoc Cang", "Mai Thi Luu", "Mac Thi Buoi", "Mac Dinh Chi", "Ma Lo", "Ly Van Phuc", "Ly Thai To", "Ly Chien Thang", "Luu Van Lang", "Luong Huu Khanh", "Le Van Huu", "Le Thi Rieng", "Le Thi Hong Gam", "Le Thanh Ton", "Le Loi", "Le Lai", "Le Duan", "Le Cong Kieu", "Ky Con", "Le Anh Xuan", "Khanh Hoi", "Huynh Thuc Khang", "Huyen Quang ", "Nguyen Hau", "Nguyen Hue", "Nguyen Huu Canh", "Nguyen Huu Cau", "Nguyen Huy Tu", "Nguyen Khac Nhu", "Nguyen Phi Khanh", "Nguyen Sieu", "Nguyen Thai Binh", "Nguyen Thai Hoc"};
@@ -58,7 +71,7 @@ Address RandomAddressGenerator::next()
 
     if (district == "District Thu Duc")
     {
-        int index = RandomIntegerGenerator::instance()->next(0, 8);
+        int index = RandomIntegerGenerator::instance()->next(1, 8);
         ward = _sample_ward[index];
     }
     else if (district == "District 1")
@@ -325,10 +338,27 @@ string RandomSimpleInfo::nextEmail(Name name)
     string result = "";
 
     string lastName = name.getLastName();
+    for (int i = 0; i < lastName.size(); i++)
+    {
+        lastName[i] = tolower(lastName[i]);
+    }
     string firstName = name.getFirstName();
+    for (int i = 0; i < firstName.size(); i++)
+    {
+        firstName[i] = tolower(firstName[i]);
+    }
     string middleName = name.getMiddleName();
+    for (int i = 0; i < middleName.size(); i++)
+    {
+        middleName[i] = tolower(middleName[i]);
+    }
+    string emailTail = "@student.hcmus.edu.vn";
 
-    result += lastName[0] + middleName[0] + firstName[0] + "@student.hcmus.edu.vn";
+    string last(1, lastName[0]);
+    string middle(1, middleName[0]);
+
+
+    result =  last + middle + firstName + emailTail;
 
     return result;
 }
@@ -337,7 +367,7 @@ double RandomSimpleInfo::nextGPA()
 {
     double result;
 
-    result = static_cast<double>(RandomIntegerGenerator::instance()->next(100)) / 100;
+    result = static_cast<double>(RandomIntegerGenerator::instance()->next(100)) / 10;
 
     return result;
 }
@@ -466,7 +496,7 @@ bool MockStudentData::createNewStudent(vector<Student> &students, int numberOfSt
         string telephone = RandomSimpleInfo::nextTelephoneNumber();
         string email = RandomSimpleInfo::nextEmail(name);
         Date dob = RandomDateGenerator::next();
-        Address address = RandomAddressGenerator::next();
+        Address address = RandomAddressGenerator::instance()->next();
 
         Student student(id, name, GPA, telephone, email, dob, address);
 
@@ -490,13 +520,14 @@ bool MockStudentData::writeStudentInfo(string filename, vector<Student> &student
     {
         for (auto &st : students)
         {
+            
             f << "Student: " << st.id() << endl;
-            f << "\tName: " << StringUtils::to_String(st.name()) << endl;
-            f << "\tGPA: " << st.gpa() << endl;
-            f << "\tTelephone: " << st.telephone() << endl;
-            f << "\tEmail: " << st.email() << endl;
-            f << "\tDOB: " << StringUtils::to_String(st.dateOfBirth()) << endl;
-            f << "\tAddress: " << StringUtils::to_String(st.address()) << endl;
+            f << "\tName = " << StringUtils::to_String(st.name()) << endl;
+            f << "\tGPA = " << st.gpa() << endl;
+            f << "\tTelephone = " << st.telephone() << endl;
+            f << "\tEmail = " << st.email() << endl;
+            f << "\tDOB = " << StringUtils::to_String(st.dateOfBirth()) << endl;
+            f << "\tAddress = " << StringUtils::to_String(st.address()) << endl;
         }
     }
 
@@ -586,12 +617,12 @@ void StudentProcessor::printStudentList(vector<Student> &students)
     for (auto &st : students)
     {
         cout << "Student: " << st.id() << endl;
-        cout << "\tName: " << StringUtils::to_String(st.name()) << endl;
-        cout << "\tGPA: " << st.gpa() << endl;
-        cout << "\tTelephone: " << st.telephone() << endl;
-        cout << "\tEmail: " << st.email() << endl;
-        cout << "\tDOB: " << StringUtils::to_String(st.dateOfBirth()) << endl;
-        cout << "\tAddress: " << StringUtils::to_String(st.address()) << endl;
+        cout << "\tName = " << StringUtils::to_String(st.name()) << endl;
+        cout << "\tGPA = " << st.gpa() << endl;
+        cout << "\tTelephone = " << st.telephone() << endl;
+        cout << "\tEmail = " << st.email() << endl;
+        cout << "\tDOB = " << StringUtils::to_String(st.dateOfBirth()) << endl;
+        cout << "\tAddress = " << StringUtils::to_String(st.address()) << endl;
     }
 }
 
@@ -605,8 +636,12 @@ void ProgramExecution::option_one(vector<Student> &students)
 
     bool successful = MockStudentData::createNewStudent(students, num);
 
-    if (successful)
+    if (successful){
         cout << "Adding students successfully" << endl;
+        string filename = "students.txt";
+        MockStudentData::writeStudentInfo(filename, students);
+    }
+       
     else
         cout << "Failed to create new students" << endl;
 }
@@ -622,7 +657,7 @@ void ProgramExecution::option_three(vector<Student> &students)
 {
     vector<Student> studentsAboveAverageGPA = StudentProcessor::findAboveAverageStudent(students);
 
-    StudentProcessor::printStudentList(students);
+    StudentProcessor::printStudentList(studentsAboveAverageGPA);
 }
 
 int ProgramExecution::main()

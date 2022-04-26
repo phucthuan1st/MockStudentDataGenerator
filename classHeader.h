@@ -130,9 +130,11 @@ private:
     static vector<string> _sample_ward;
     static vector<string> _sample_district;
 
-    RandomAddressGenerator();
+    static shared_ptr<RandomAddressGenerator> _instance;
 
 public:
+    RandomAddressGenerator();
+    static shared_ptr<RandomAddressGenerator> instance();
     static Address next();
 };
 
