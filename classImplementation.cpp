@@ -247,11 +247,11 @@ RandomNameGenerator::RandomNameGenerator()
         "Ha"};
 }
 
-vector<pair<string, float>> RandomNameGenerator::_sample_firstNames = {};
+vector<pair<string, int>> RandomNameGenerator::_sample_firstNames = {};
 vector<string> RandomNameGenerator::_sample_middleNames = {};
-vector<pair<string, float>> RandomNameGenerator::_sample_lastNames = {};
+vector<pair<string, int>> RandomNameGenerator::_sample_lastNames = {};
 
-void RandomNameGenerator::getSampleLastNames(const char *filename)
+void RandomNameGenerator::getSampleLastNames(string filename)
 {
     fstream file(filename, ios::in);
     while (!file.eof())
@@ -260,14 +260,14 @@ void RandomNameGenerator::getSampleLastNames(const char *filename)
         getline(file, temp_str);
         vector<string> token = StringUtils::split(temp_str, "\t");
 
-        pair<string, double> lastName = make_pair(token[0], stoi(token[1]));
+        pair<string, int> lastName = make_pair(token[0], stoi(token[1]));
         _sample_lastNames.push_back(lastName);
     }
 
     file.close();
 }
 
-void RandomNameGenerator::getSampleFirstNames(const char *filename)
+void RandomNameGenerator::getSampleFirstNames(string filename)
 {
     fstream file(filename, ios::in);
     while (!file.eof())
@@ -276,7 +276,7 @@ void RandomNameGenerator::getSampleFirstNames(const char *filename)
         getline(file, temp_str);
         vector<string> token = StringUtils::split(temp_str, "\t");
 
-        pair<string, double> firstName = make_pair(token[0], stoi(token[1]));
+        pair<string, int> firstName = make_pair(token[0], stoi(token[1]));
         _sample_firstNames.push_back(firstName);
     }
 
@@ -378,7 +378,7 @@ string RandomSimpleInfo::nextID()
 //------------------------------------------------------------------//
 
 // mock up data method implementation
-vector<Student> MockStudentData::parse(const char *filename)
+vector<Student> MockStudentData::parse(string filename)
 {
     vector<Student> students = {};
 
@@ -446,6 +446,8 @@ vector<Student> MockStudentData::parse(const char *filename)
             string district = token[2];
 
             student.setAddress(Address(stoi(num), street, ward, district));
+
+            students.push_back(student);
         }
     }
 
@@ -474,7 +476,7 @@ bool MockStudentData::createNewStudent(vector<Student> &students, int numberOfSt
     return true;
 }
 
-bool MockStudentData::writeStudentInfo(const char *filename, vector<Student> &students)
+bool MockStudentData::writeStudentInfo(string filename, vector<Student> &students)
 {
     fstream f(filename, ios::out);
     bool successful = true;
@@ -625,7 +627,7 @@ void ProgramExecution::option_three(vector<Student> &students)
 
 int ProgramExecution::main()
 {
-    const char *filename = "students.txt";
+    string filename = "students.txt";
     vector<Student> students = MockStudentData::parse(filename);
 
     bool will_continue = true;

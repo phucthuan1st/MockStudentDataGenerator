@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include <string.h>
+#include <string>
 #include <ctime>
 #include <vector>
 #include <fstream>
@@ -52,12 +52,12 @@ public:
 class RandomNameGenerator
 {
 private:
-    static vector<pair<string, float>> _sample_firstNames;
+    static vector<pair<string, int>> _sample_firstNames;
     static vector<string> _sample_middleNames;
-    static vector<pair<string, float>> _sample_lastNames;
+    static vector<pair<string, int>> _sample_lastNames;
 
-    static void getSampleFirstNames(const char *filename);
-    static void getSampleLastNames(const char *filename);
+    static void getSampleFirstNames(string filename);
+    static void getSampleLastNames(string filename);
 
     static shared_ptr<RandomNameGenerator> _instance;
 
@@ -205,13 +205,13 @@ class MockStudentData
 {
 public:
     // parse data from file to an array
-    static vector<Student> parse(const char *filename);
+    static vector<Student> parse(string filename);
 
     // add n new random student to students list vector
     static bool createNewStudent(vector<Student> &students, int numberOfStudent);
 
     // write all student info to file
-    static bool writeStudentInfo(const char *filename, vector<Student> &students);
+    static bool writeStudentInfo(string filename, vector<Student> &students);
 };
 
 class StudentProcessor
