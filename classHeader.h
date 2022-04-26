@@ -52,8 +52,6 @@ public:
 class RandomNameGenerator
 {
 private:
-    RandomNameGenerator();
-
     static vector<pair<string, float>> _sample_firstNames;
     static vector<string> _sample_middleNames;
     static vector<pair<string, float>> _sample_lastNames;
@@ -61,7 +59,11 @@ private:
     static void getSampleFirstNames(const char *filename);
     static void getSampleLastNames(const char *filename);
 
+    static shared_ptr<RandomNameGenerator> _instance;
+
 public:
+    RandomNameGenerator();
+    static shared_ptr<RandomNameGenerator> instance();
     static Name next();
 };
 

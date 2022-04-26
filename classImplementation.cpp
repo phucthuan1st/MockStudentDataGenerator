@@ -3,11 +3,6 @@
 // integer randomizer implementation
 shared_ptr<RandomIntegerGenerator> RandomIntegerGenerator::_instance = nullptr;
 
-RandomIntegerGenerator::RandomIntegerGenerator()
-{
-    srand(time(NULL));
-}
-
 shared_ptr<RandomIntegerGenerator> RandomIntegerGenerator::instance()
 {
     if (_instance == nullptr)
@@ -16,6 +11,11 @@ shared_ptr<RandomIntegerGenerator> RandomIntegerGenerator::instance()
     }
 
     return _instance;
+}
+
+RandomIntegerGenerator::RandomIntegerGenerator()
+{
+    srand(time(NULL));
 }
 
 int RandomIntegerGenerator::next()
@@ -207,6 +207,20 @@ Date RandomDateGenerator::next()
 //-------------------------------------------------------------------//
 
 // name randomizer
+shared_ptr<RandomNameGenerator> RandomNameGenerator::_instance = nullptr;
+
+shared_ptr<RandomNameGenerator> RandomNameGenerator::instance()
+{
+    if (_instance == nullptr)
+    {
+        _instance = make_shared<RandomNameGenerator>();
+        getSampleLastNames("top_lastname.txt");
+        getSampleFirstNames("top_firstname.txt");
+    }
+
+    return _instance;
+}
+
 RandomNameGenerator::RandomNameGenerator()
 {
     _sample_middleNames = {
@@ -231,9 +245,6 @@ RandomNameGenerator::RandomNameGenerator()
         "Tan",
         "Tu",
         "Ha"};
-
-    getSampleLastNames("top_lastname.txt");
-    getSampleFirstNames("top_firstname.txt");
 }
 
 vector<pair<string, float>> RandomNameGenerator::_sample_firstNames = {};
@@ -274,6 +285,7 @@ void RandomNameGenerator::getSampleFirstNames(const char *filename)
 
 Name RandomNameGenerator::next()
 {
+
     Name result;
     // get random first name
     int totalrate = 0;
@@ -364,9 +376,9 @@ string RandomSimpleInfo::nextID()
 // mock up data method implementation
 vector<Student> MockStudentData::parse(const char *filename)
 {
-    vector<Student> students;
+    vector<Student> students = {};
 
-    fstream file(filename, ios::in | ios::out);
+    fstream file(filename, ios::in);
 
     if (!file.is_open())
     {
@@ -379,7 +391,7 @@ vector<Student> MockStudentData::parse(const char *filename)
             Student student;
 
             string temp_str;
-            int id_size = 8;
+
             // get ID of student
             getline(file, temp_str);
             vector<string> token = StringUtils::split(temp_str, " ");
@@ -413,7 +425,7 @@ vector<Student> MockStudentData::parse(const char *filename)
             token = StringUtils::split(temp_str, " = ");
 
             string date = token[1];
-            token = StringUtils::split(temp_str, "/");
+            token = StringUtils::split(date, "/");
             Date DOB(stoi(token[0]), stoi(token[1]), stoi(token[2]));
             student.setDOB(DOB);
 
@@ -443,7 +455,7 @@ bool MockStudentData::createNewStudent(vector<Student> &students, int numberOfSt
     for (int i = 0; i < numberOfStudent; i++)
     {
         string id = RandomSimpleInfo::nextID();
-        Name name = RandomNameGenerator::next();
+        Name name = RandomNameGenerator::instance()->next();
         double GPA = RandomSimpleInfo::nextGPA();
         string telephone = RandomSimpleInfo::nextTelephoneNumber();
         string email = RandomSimpleInfo::nextEmail(name);
@@ -498,7 +510,7 @@ vector<string> StringUtils::split(string source, string delimiter)
         string token = source.substr(start, end - start);
         result.push_back(token);
         start = end + delimiter.length();
-        end = source.find(delimiter);
+        end = source.find(delimiter, start);
     }
 
     result.push_back(source.substr(start, end - start));
@@ -616,7 +628,7 @@ int ProgramExecution::main()
 
     while (will_continue)
     {
-        system("clear");
+        system("cls");
         int choice = -1;
         cout << "1. Add n mock up data and overwrite file" << endl;
         cout << "2. Print out the average GPA of students" << endl;
@@ -646,7 +658,7 @@ int ProgramExecution::main()
             cout << "ERROR: Unknown choice" << endl;
         }
 
-        cin.get();
+        system("pause");
     }
 
     return 0;
