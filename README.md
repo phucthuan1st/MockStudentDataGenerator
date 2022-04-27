@@ -42,6 +42,9 @@ git clone https://github.com/phucthuan1st/MockStudentDataGenerator/
 If your PC do not have git yet, just install it [Git install instruction](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 2. Start a command promt or terminal in your folder repository (or using cd command)
+```shellcript
+cd ./MockStudentDataGenerator/
+```
 
 3. Compile source file using c++ compiler (such as mingw c++ as below)
 ```shellscript
