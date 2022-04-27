@@ -1,21 +1,42 @@
 Student: 20120831
-    Name = Tran Huu Minh
-    GPA = 7.30
-    Telephone = 0909-888-773
-    Email = thminh@student.hcmus.edu.vn
-    DOB = 17/12/2003
-    Address = 8 Nguyen Dinh Chieu, Ward 5, District 3, Ho Chi Minh city
+	Name = Tran Huu Minh
+	GPA = 7.3
+	Telephone = 0909-888-773
+	Email = thminh@student.hcmus.edu.vn
+	DOB = 17/12/2003
+	Address = 8 Nguyen Dinh Chieu, Ward 5, District 3, Ho Chi Minh City
 Student: 20120832
-    Name = Nguyen Dieu Linh
-    GPA = 9.22
-    Telephone = 0912-351-718
-    Email = thminh@student.hcmus.edu.vn
-    DOB = 23/09/2003
-    Address = 22 Ngo Thoi Nhiem, Ward 2, District 1, Ho Chi Minh city 
+	Name = Nguyen Dieu Linh
+	GPA = 9.22
+	Telephone = 0912-351-718
+	Email = thminh@student.hcmus.edu.vn
+	DOB = 23/9/2003
+	Address = 22 Ngo Thoi Nhiem, Ward 2, District 1, Ho Chi Minh City
 Student: 20120833
-    Name = Ngo Thoi Chanh
-    GPA = 8.12
-    Telephone = 0977-161-237
-    Email = ntchanh@student.hcmus.edu.vn
-    DOB = 12/06/2003
-    Address = 8 Binh Long, Binh Hung Hoa Ward, Binh Tan District, Ho Chi Minh city
+	Name = Ngo Thoi Chanh
+	GPA = 8.12
+	Telephone = 0977-161-237
+	Email = ntchanh@student.hcmus.edu.vn
+	DOB = 12/6/2003
+	Address = 8 Binh Long, Binh Hung Hoa Ward, Binh Tan District, Ho Chi Minh City
+Student: 21201765
+	Name = Kha Thao Tham
+	GPA = 5.6
+	Telephone = 06527-125-1
+	Email = kttham@student.hcmus.edu.vn
+	DOB = 31/3/2002
+	Address = 408 Mac Dinh Chi, Ward 3, District Tan Binh, Ho Chi Minh City
+Student: 22202610
+	Name = Kha Thuy Tham
+	GPA = 4.7
+	Telephone = 03640-861-7
+	Email = kttham@student.hcmus.edu.vn
+	DOB = 31/3/1994
+	Address = 201 Cong Quynh, Ward 3, District Binh Thanh, Ho Chi Minh City
+Student: 2210684
+	Name = Kha Van Tham
+	GPA = 1.5
+	Telephone = 04281-652-0
+	Email = kvtham@student.hcmus.edu.vn
+	DOB = 10/9/2002
+	Address = 28 Nguyen Khac Nhu, Ward Ben Nghe, District 1, Ho Chi Minh City
