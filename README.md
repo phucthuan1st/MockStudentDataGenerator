@@ -83,7 +83,7 @@ git clone https://github.com/phucthuan1st/MockStudentDataGenerator
 ```
 
 ```shellscript
-cd ./MockStudentDataGenerator/ ;
+cd ./MockStudentDataGenerator
 ```
 
 ```shellscript
