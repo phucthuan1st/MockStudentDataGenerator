@@ -465,7 +465,6 @@ vector<Student> MockStudentData::parse(string filename)
 
             students.push_back(student);
         }
-        cout << "we are there" << endl;
     }
 
     file.close();
