@@ -376,7 +376,7 @@ string RandomSimpleInfo::nextID()
     result += to_string(major);
 
     // id
-    int id = RandomIntegerGenerator::instance()->next(9999);
+    int id = RandomIntegerGenerator::instance()->next(10000);
     result += to_string(id);
     while (result.length() != 8)
     {
