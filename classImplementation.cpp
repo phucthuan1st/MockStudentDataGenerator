@@ -209,7 +209,7 @@ Date RandomDateGenerator::next()
         }
     }
 
-    int year = RandomIntegerGenerator::instance()->next(1990, 2022);
+    int year = RandomIntegerGenerator::instance()->next(1990, 2005);
 
     Date result(day, month, year);
     return result;
@@ -306,6 +306,7 @@ Name RandomNameGenerator::next()
         if (rate < totalrate)
         {
             result.setFirstName(it.first);
+            break;
         }
     }
 
@@ -322,6 +323,7 @@ Name RandomNameGenerator::next()
         if (rate < totalrate)
         {
             result.setLastName(it.first);
+            break;
         }
     }
 

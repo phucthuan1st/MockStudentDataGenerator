@@ -19,38 +19,38 @@ Student: 20120833
 	Email = ntchanh@student.hcmus.edu.vn
 	DOB = 12/6/2003
 	Address = 8 Binh Long, Binh Hung Hoa Ward, Binh Tan District, Ho Chi Minh City
-Student: 20202059
-	Name = Kha Phuong Tham
-	GPA = 8.01
-	Telephone = 00857-565-5
-	Email = kptham@student.hcmus.edu.vn
-	DOB = 31/3/1995
-	Address = 384 Le Cong Kieu, Ward 4, District Phu Nhuan, Ho Chi Minh City
-Student: 18114991
-	Name = Kha Ha Tham
-	GPA = 8.76
-	Telephone = 04206-426-0
-	Email = khtham@student.hcmus.edu.vn
-	DOB = 31/3/2010
-	Address = 45 Nguyen Huu Canh, Ward Dong Hanh, District Hoc Mon, Ho Chi Minh City
-Student: 24114743
-	Name = Kha Kieu Tham
-	GPA = 5.17
-	Telephone = 01146-828-2
-	Email = kktham@student.hcmus.edu.vn
-	DOB = 31/7/2020
-	Address = 346 Cao Ba Nha, Ward Binh Trung Tay, District Thu Duc, Ho Chi Minh City
-Student: 21103558
-	Name = Kha Tuan Tham
-	GPA = 5.27
-	Telephone = 02580-786-3
-	Email = kttham@student.hcmus.edu.vn
-	DOB = 23/6/1993
-	Address = 353 Nguyen Huu Cau, Ward Tan Kieng, District 7, Ho Chi Minh City
-Student: 22146761
-	Name = Kha Huy Tham
-	GPA = 9.09
-	Telephone = 06180-170-1
-	Email = khtham@student.hcmus.edu.vn
-	DOB = 31/8/1991
-	Address = 307 Cach Mang Thang 8, Ward Tan Kieng, District 7, Ho Chi Minh City
+Student: 23222567
+	Name = Nguyen Tuong Anh
+	GPA = 5.13
+	Telephone = 07376-356-8
+	Email = ntanh@student.hcmus.edu.vn
+	DOB = 22/6/2004
+	Address = 106 Nguyen Cu Trinh, Ward 3, District 3, Ho Chi Minh City
+Student: 22108127
+	Name = Nguyen Viet Anh
+	GPA = 4.41
+	Telephone = 01101-504-2
+	Email = nvanh@student.hcmus.edu.vn
+	DOB = 31/7/1992
+	Address = 68 Co Bac, Ward 4, District Go Vap, Ho Chi Minh City
+Student: 20107542
+	Name = Nguyen Ngoc Anh
+	GPA = 7.01
+	Telephone = 01454-611-7
+	Email = nnanh@student.hcmus.edu.vn
+	DOB = 4/2/2017
+	Address = 71 Alexandre de Rhodes, Ward Binh Thuan, District 7, Ho Chi Minh City
+Student: 17101206
+	Name = Nguyen Thao Anh
+	GPA = 9.16
+	Telephone = 06354-757-4
+	Email = ntanh@student.hcmus.edu.vn
+	DOB = 31/1/2014
+	Address = 24 Le Thi Rieng, Ward Cat Lai, District Thu Duc, Ho Chi Minh City
+Student: 24162309
+	Name = Nguyen Lan Anh
+	GPA = 3.38
+	Telephone = 07668-750-5
+	Email = nlanh@student.hcmus.edu.vn
+	DOB = 31/3/2003
+	Address = 439 Nguyen Thai Hoc, Ward Tan Dinh, District 1, Ho Chi Minh City
