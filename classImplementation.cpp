@@ -7,16 +7,14 @@ shared_ptr<RandomIntegerGenerator> RandomIntegerGenerator::instance()
 {
     if (_instance == nullptr)
     {
+        srand(time(NULL));
         _instance = make_shared<RandomIntegerGenerator>();
     }
 
     return _instance;
 }
 
-RandomIntegerGenerator::RandomIntegerGenerator()
-{
-    srand(time(NULL));
-}
+RandomIntegerGenerator::RandomIntegerGenerator() {}
 
 int RandomIntegerGenerator::next()
 {
@@ -32,7 +30,7 @@ int RandomIntegerGenerator::next(int ceiling)
 
 int RandomIntegerGenerator::next(int left, int right)
 {
-    int result = rand() % (left - right + 1) + left;
+    int result = rand() % (right - left + 1) + left;
     return result;
 }
 //--------------------------------------------------------------------//
@@ -45,7 +43,6 @@ shared_ptr<RandomAddressGenerator> RandomAddressGenerator::instance()
     if (_instance == nullptr)
     {
         _instance = make_shared<RandomAddressGenerator>();
-        
     }
 
     return _instance;
@@ -357,8 +354,7 @@ string RandomSimpleInfo::nextEmail(Name name)
     string last(1, lastName[0]);
     string middle(1, middleName[0]);
 
-
-    result =  last + middle + firstName + emailTail;
+    result = last + middle + firstName + emailTail;
 
     return result;
 }
@@ -367,7 +363,7 @@ double RandomSimpleInfo::nextGPA()
 {
     double result;
 
-    result = static_cast<double>(RandomIntegerGenerator::instance()->next(100)) / 10;
+    result = static_cast<double>(RandomIntegerGenerator::instance()->next(300, 1000)) / 100;
 
     return result;
 }
@@ -518,16 +514,20 @@ bool MockStudentData::writeStudentInfo(string filename, vector<Student> &student
     }
     else
     {
-        for (auto &st : students)
+        for (int i = 0; i < students.size(); i++)
         {
-            
-            f << "Student: " << st.id() << endl;
-            f << "\tName = " << StringUtils::to_String(st.name()) << endl;
-            f << "\tGPA = " << st.gpa() << endl;
-            f << "\tTelephone = " << st.telephone() << endl;
-            f << "\tEmail = " << st.email() << endl;
-            f << "\tDOB = " << StringUtils::to_String(st.dateOfBirth()) << endl;
-            f << "\tAddress = " << StringUtils::to_String(st.address()) << endl;
+            f << "Student: " << students[i].id() << endl;
+            f << "\tName = " << StringUtils::to_String(students[i].name()) << endl;
+            f << "\tGPA = " << students[i].gpa() << endl;
+            f << "\tTelephone = " << students[i].telephone() << endl;
+            f << "\tEmail = " << students[i].email() << endl;
+            f << "\tDOB = " << StringUtils::to_String(students[i].dateOfBirth()) << endl;
+            f << "\tAddress = " << StringUtils::to_String(students[i].address());
+
+            if (i < students.size() - 1)
+            {
+                f << endl;
+            }
         }
     }
 
@@ -636,12 +636,12 @@ void ProgramExecution::option_one(vector<Student> &students)
 
     bool successful = MockStudentData::createNewStudent(students, num);
 
-    if (successful){
+    if (successful)
+    {
         cout << "Adding students successfully" << endl;
         string filename = "students.txt";
         MockStudentData::writeStudentInfo(filename, students);
     }
-       
     else
         cout << "Failed to create new students" << endl;
 }
