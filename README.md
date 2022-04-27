@@ -75,15 +75,20 @@ We think we could get a bit of bonus 🤣
 
 ## Demo:
 You can see a mini demo of this project in this link [Youtube Demo](https://youtu.be/5cBwlccaYnk) or [Youtube Rick roll](https://youtu.be/dQw4w9WgXcQ)
-```shellscript
-git clone https://github.com/phucthuan1st/MockStudentDataGenerator ; 
-cd ./MockStudentDataGenerator/ ;
-./Release/MockupStudentDataGenerator
-```
-Then press Enter to execute the program
 
 ## Note
 You can use the execution file in ./Release without compile it by do step 1 & 2, then do step 4
+```shellscript
+git clone https://github.com/phucthuan1st/MockStudentDataGenerator
+```
+
+```shellscript
+cd ./MockStudentDataGenerator/ ;
+```
+
+```shellscript
+./Release/MockupStudentDataGenerator
+```
 
 ## Thanks for visiting us 🤑🤑
 
