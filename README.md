@@ -77,7 +77,7 @@ We think we could get a bit of bonus 🤣
 You can see a mini demo of this project in this link [Youtube Demo](https://youtu.be/5cBwlccaYnk) or [Youtube Rick roll](https://youtu.be/dQw4w9WgXcQ)
 
 ## Note
-There is no note at this time
+You can use the execution file in ./Release without compile it by do step 1 & 2, then do step 4
 
 ## Thanks for visiting us 🤑🤑
 
