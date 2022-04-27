@@ -19,6 +19,7 @@ RandomIntegerGenerator::RandomIntegerGenerator() {}
 int RandomIntegerGenerator::next()
 {
     int result = rand();
+
     return result;
 }
 
@@ -254,12 +255,13 @@ RandomNameGenerator::RandomNameGenerator()
         "Thao",
         "Tan",
         "Tu",
-        "Ha"};
+        "Ha",
+        "Kim"};
 }
 
-vector<pair<string, int>> RandomNameGenerator::_sample_firstNames = {};
+vector<string> RandomNameGenerator::_sample_firstNames = {};
 vector<string> RandomNameGenerator::_sample_middleNames = {};
-vector<pair<string, int>> RandomNameGenerator::_sample_lastNames = {};
+vector<string> RandomNameGenerator::_sample_lastNames = {};
 
 void RandomNameGenerator::getSampleLastNames(string filename)
 {
@@ -268,9 +270,8 @@ void RandomNameGenerator::getSampleLastNames(string filename)
     {
         string temp_str;
         getline(file, temp_str);
-        vector<string> token = StringUtils::split(temp_str, "\t");
 
-        pair<string, int> lastName = make_pair(token[0], stoi(token[1]));
+        string lastName = temp_str;
         _sample_lastNames.push_back(lastName);
     }
 
@@ -284,9 +285,8 @@ void RandomNameGenerator::getSampleFirstNames(string filename)
     {
         string temp_str;
         getline(file, temp_str);
-        vector<string> token = StringUtils::split(temp_str, "\t");
 
-        pair<string, int> firstName = make_pair(token[0], stoi(token[1]));
+        string firstName = temp_str;
         _sample_firstNames.push_back(firstName);
     }
 
@@ -299,33 +299,16 @@ Name RandomNameGenerator::next()
     Name result;
     // get random first name
     int totalrate = 0;
-    int rate = RandomIntegerGenerator::instance()->next(2000000);
-    for (auto &it : RandomNameGenerator::_sample_firstNames)
-    {
-        totalrate += it.second;
-        if (rate < totalrate)
-        {
-            result.setFirstName(it.first);
-            break;
-        }
-    }
+    int index = RandomIntegerGenerator::instance()->next(_sample_firstNames.size());
+    result.setFirstName(_sample_firstNames[index]);
 
     // get random middle name
-    int index = RandomIntegerGenerator::instance()->next(_sample_middleNames.size());
+    index = RandomIntegerGenerator::instance()->next(_sample_middleNames.size());
     result.setMiddleName(_sample_middleNames[index]);
 
     // get random last name
-    totalrate = 0;
-    rate = RandomIntegerGenerator::instance()->next(1000000);
-    for (auto &it : _sample_lastNames)
-    {
-        totalrate += it.second;
-        if (rate < totalrate)
-        {
-            result.setLastName(it.first);
-            break;
-        }
-    }
+    index = RandomIntegerGenerator::instance()->next(_sample_lastNames.size());
+    result.setLastName(_sample_lastNames[index]);
 
     return result;
 }
@@ -334,29 +317,24 @@ Name RandomNameGenerator::next()
 // other info randomizer
 string RandomSimpleInfo::nextEmail(Name name)
 {
-    string result = "";
 
     string lastName = name.getLastName();
-    for (int i = 0; i < lastName.size(); i++)
+    for (int i = 0; i < lastName.length(); i++)
     {
+        if (lastName[i] == ' ')
+            lastName.erase(i, 1);
         lastName[i] = tolower(lastName[i]);
     }
+
     string firstName = name.getFirstName();
-    for (int i = 0; i < firstName.size(); i++)
-    {
-        firstName[i] = tolower(firstName[i]);
-    }
+    firstName[0] = tolower(firstName[0]);
+
     string middleName = name.getMiddleName();
-    for (int i = 0; i < middleName.size(); i++)
-    {
-        middleName[i] = tolower(middleName[i]);
-    }
+    middleName[0] = tolower(middleName[0]);
+
     string emailTail = "@student.hcmus.edu.vn";
 
-    string last(1, lastName[0]);
-    string middle(1, middleName[0]);
-
-    result = last + middle + firstName + emailTail;
+    string result = lastName + middleName + firstName + emailTail;
 
     return result;
 }
@@ -374,9 +352,9 @@ string RandomSimpleInfo::nextTelephoneNumber()
 {
     string result = "0";
 
-    for (int i = 1; i <= 10; i++)
+    for (int i = 1; i <= 11; i++)
     {
-        if (i != 5 && i != 9)
+        if (i != 4 && i != 8)
             result += to_string(RandomIntegerGenerator::instance()->next(9));
         else
             result += "-";
@@ -400,6 +378,10 @@ string RandomSimpleInfo::nextID()
     // id
     int id = RandomIntegerGenerator::instance()->next(9999);
     result += to_string(id);
+    while (result.length() != 8)
+    {
+        result.insert(3, "0");
+    }
 
     return result;
 }
@@ -418,15 +400,14 @@ vector<Student> MockStudentData::parse(string filename)
     }
     else
     {
-        while (!file.eof())
+        string temp_str = "";
+        while (getline(file, temp_str))
         {
             Student student;
 
-            string temp_str;
-
             // get ID of student
-            getline(file, temp_str);
             vector<string> token = StringUtils::split(temp_str, " ");
+            temp_str = "";
             student.setID(token[1]);
 
             // get Name
@@ -435,35 +416,42 @@ vector<Student> MockStudentData::parse(string filename)
 
             string name = token[1];
             vector<string> names = StringUtils::split(name, " ");
+            temp_str = "";
             student.setName(Name(names[0], names[1], names[2]));
 
             // get GPA
             getline(file, temp_str);
             token = StringUtils::split(temp_str, " = ");
+            temp_str = "";
             student.setGPA(stod(token[1]));
 
             // get Telephone
             getline(file, temp_str);
             token = StringUtils::split(temp_str, " = ");
+            temp_str = "";
             student.setTelephone(token[1]);
 
             // get Email
             getline(file, temp_str);
             token = StringUtils::split(temp_str, " = ");
+            temp_str = "";
             student.setEmail(token[1]);
 
             // get DOB
             getline(file, temp_str);
             token = StringUtils::split(temp_str, " = ");
+            temp_str = "";
 
             string date = token[1];
             token = StringUtils::split(date, "/");
             Date DOB(stoi(token[0]), stoi(token[1]), stoi(token[2]));
+            date = "";
             student.setDOB(DOB);
 
             // get Address
             getline(file, temp_str);
             token = StringUtils::split(temp_str, " = ");
+            temp_str = "";
 
             token = StringUtils::split(token[1], ", ");
 
@@ -477,6 +465,7 @@ vector<Student> MockStudentData::parse(string filename)
 
             students.push_back(student);
         }
+        cout << "we are there" << endl;
     }
 
     file.close();
@@ -640,9 +629,20 @@ void ProgramExecution::option_one(vector<Student> &students)
 
     if (successful)
     {
-        cout << "Adding students successfully" << endl;
+        time_t start = clock();
+
+        // write file
         string filename = "students.txt";
         MockStudentData::writeStudentInfo(filename, students);
+
+        // reset vector
+        students = {};
+        students = MockStudentData::parse(filename);
+
+        time_t end = clock();
+
+        double exe_time = (end - start) * 1.0 / CLOCKS_PER_SEC;
+        cout << "Adding students successfully in " << exe_time << " seconds." << endl;
     }
     else
         cout << "Failed to create new students" << endl;
@@ -660,6 +660,8 @@ void ProgramExecution::option_three(vector<Student> &students)
     vector<Student> studentsAboveAverageGPA = StudentProcessor::findAboveAverageStudent(students);
 
     StudentProcessor::printStudentList(studentsAboveAverageGPA);
+
+    cout << "There are " << studentsAboveAverageGPA.size() << " out of " << students.size() << " students above average " << endl;
 }
 
 int ProgramExecution::main()

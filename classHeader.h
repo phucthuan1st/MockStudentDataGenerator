@@ -52,9 +52,9 @@ public:
 class RandomNameGenerator
 {
 private:
-    static vector<pair<string, int>> _sample_firstNames;
+    static vector<string> _sample_firstNames;
     static vector<string> _sample_middleNames;
-    static vector<pair<string, int>> _sample_lastNames;
+    static vector<string> _sample_lastNames;
 
     static void getSampleFirstNames(string filename);
     static void getSampleLastNames(string filename);
