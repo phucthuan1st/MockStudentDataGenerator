@@ -74,7 +74,7 @@ We think we could get a bit of bonus 🤣
   - Lê Trương Kinh Thành - 20120373: 10
 
 ## Demo:
-You can see a mini demo of this project in this link [Youtube](https://youtu.be/dQw4w9WgXcQ)
+You can see a mini demo of this project in this link [Youtube Demo](https://youtu.be/5cBwlccaYnk) or [Youtube Rick roll](https://youtu.be/dQw4w9WgXcQ)
 
 ## Note
 There is no note at this time
